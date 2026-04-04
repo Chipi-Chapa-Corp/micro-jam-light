@@ -12,4 +12,5 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 96
 text = "Game Jam Light"
