@@ -1,13 +1,21 @@
 class_name GameState
 extends Node
 
-const LEVEL_COUNT: int = 4
+const LEVEL_COUNT: int = 3
+const LEVEL_SCENES: Dictionary = {
+	1: "res://scenes/levels/tutorial/tutorial-level.tscn",
+	2: "res://scenes/levels/level1.tscn",
+	3: "res://scenes/enemies/enemies-level.tscn",
+}
 const _NOT_STARTED_TICK: int = -1
 
 var current_level: int = 1
-var _stars_by_level: Array[int] = [0, 0, 0, 0]
-var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0, 0.0]
-var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+var _stars_by_level: Array[int] = [0, 0, 0]
+var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0]
+var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+
+func get_current_level_scene() -> String:
+	return LEVEL_SCENES.get(current_level, "")
 
 
 func _is_valid_level(level: int) -> bool:
@@ -91,6 +99,10 @@ func get_total_stars() -> int:
 
 func reset_progress() -> void:
 	current_level = 1
-	_stars_by_level = [0, 0, 0, 0]
-	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0]
-	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+	_stars_by_level = [0, 0, 0]
+	_time_by_level_seconds = [0.0, 0.0, 0.0]
+	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+
+func reset_current_level() -> void:
+	_stars_by_level[_to_index(current_level)] = 0
+	start_level(current_level)

@@ -29,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	
 	update_facing_direction()
 	move_and_slide()
+	_check_player_collision()
 
 func shoot() -> void:
 	if not is_instance_valid(player) or not _is_player_in_front():

@@ -36,7 +36,7 @@ func _ready() -> void:
 	if anim:
 		anim.play("walk")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_update_facing_for_overhead_player()
 	sees_player_now = can_see_player()
 
@@ -47,8 +47,17 @@ func _physics_process(delta: float) -> void:
 
 	update_facing_direction()
 	move_and_slide()
+	_check_player_collision()
 
-func _process(delta: float) -> void:
+func _check_player_collision() -> void:
+	for i in range(get_slide_collision_count()):
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider and collider.is_in_group("player") and collider.has_method("take_damage"):
+			collider.take_damage()
+			break
+
+func _process(_delta: float) -> void:
 	queue_redraw()
 
 func patrol() -> void:

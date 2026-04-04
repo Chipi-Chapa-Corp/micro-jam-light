@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci81yiuoqahgp"]
+[gd_scene format=3 uid="uid://ci81yiuoqahgp"]
 
-[ext_resource type="Script" path="res://scenes/game-over/script.gd" id="1_jm6rw"]
+[ext_resource type="Script" uid="uid://cj4kmk7cfjujj" path="res://scenes/game-over/script.gd" id="1_jm6rw"]
 [ext_resource type="Theme" uid="uid://dq5he3f3qilxj" path="res://scenes/main-menu/gui-elements/theme.tres" id="2_v4j2r"]
 
 [node name="Game Over" type="Control" unique_id=472900240]
@@ -13,7 +13,7 @@ grow_vertical = 2
 theme = ExtResource("2_v4j2r")
 script = ExtResource("1_jm6rw")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=157731610]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,21 +25,21 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=821383185]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=24093300]
 layout_mode = 2
 theme_override_font_sizes/font_size = 72
 text = "Game Over"
 
-[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2100776037]
 layout_mode = 2
 theme_override_font_sizes/font_size = 34
 text = "Level Metrics"
 
-[node name="LevelRows" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="LevelRows" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1935733624]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10

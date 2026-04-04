@@ -2,12 +2,6 @@ class_name GameOverScreen
 extends Control
 
 const THEMED_BUTTON_SCENE: PackedScene = preload("res://scenes/main-menu/gui-elements/button.tscn")
-const LEVEL_SCENES: Dictionary = {
-	1: "res://scenes/levels/tutorial/tutorial-level.tscn",
-	2: "res://scenes/levels/level1.tscn",
-	3: "",
-	4: ""
-}
 
 @onready var level_rows: VBoxContainer = $MarginContainer/VBoxContainer/LevelRows
 
@@ -39,7 +33,7 @@ func _build_level_row(level: int) -> HBoxContainer:
 	row.add_child(metrics_label)
 
 	var restart_button: Button = THEMED_BUTTON_SCENE.instantiate() as Button
-	var scene_path: String = str(LEVEL_SCENES.get(level, ""))
+	var scene_path: String = GlobalState.LEVEL_SCENES.get(level, "")
 
 	if scene_path.is_empty():
 		restart_button.text = "Restart L%d (TBD)" % level

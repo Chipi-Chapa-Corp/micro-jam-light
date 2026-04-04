@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var tile_map: Node2D = $"../TileMap"
+@onready var tile_map: Node2D = _resolve_tile_map()
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -25,6 +25,18 @@ func _ready() -> void:
 	await spawn_appear_effect()
 	set_physics_process(true)
 	anim.visible = true
+
+func _resolve_tile_map() -> Node2D:
+	var parent_node := get_parent()
+	if parent_node is Node2D and parent_node.name == "TileMap":
+		return parent_node as Node2D
+
+	var sibling_tile_map := get_node_or_null("../TileMap")
+	if sibling_tile_map is Node2D:
+		return sibling_tile_map as Node2D
+
+	push_warning("player.gd: Could not resolve TileMap node for player.")
+	return null
 	
 func _physics_process(delta: float) -> void:
 	_resolve_stuck()
@@ -110,6 +122,9 @@ func play_anim(animation_name: String) -> void:
 		anim.play(animation_name)
 
 func _resolve_stuck() -> void:
+	if tile_map == null:
+		return
+
 	if not test_move(global_transform, Vector2.ZERO):
 		return
 
@@ -149,8 +164,10 @@ func take_damage() -> void:
 	if is_exiting:
 		return
 
-	print("Player died!")
-	# play_disappear_effect()
+	is_exiting = true
+	set_physics_process(false)
+	velocity = Vector2.ZERO
+	anim.visible = false
 
 	var effect = spawn_effect.instantiate()
 	get_parent().add_child(effect)
@@ -158,3 +175,5 @@ func take_damage() -> void:
 	effect.start_animation = "disappear"
 
 	await effect.finished
+	GlobalState.reset_current_level()
+	get_tree().reload_current_scene()

@@ -2,7 +2,7 @@ extends "res://scenes/enemies/enemy.gd"
 
 const BOUNDARY_EPSILON: float = 1.0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	sees_player_now = can_see_player()
 
 	if sees_player_now and is_instance_valid(player):
@@ -25,6 +25,7 @@ func _physics_process(delta: float) -> void:
 	update_facing_direction()
 	move_and_slide()
 	_clamp_to_waypoint_bounds()
+	_check_player_collision()
 
 func _hits_waypoint_boundary_while_chasing(x_direction: int, bounds: Dictionary) -> bool:
 	if x_direction == 0:
