@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bka6giegw211v"]
+
+[ext_resource type="Shader" uid="uid://ceygjlgfnq8gf" path="res://scenes/levels/materials/shadow-tint.gdshader" id="1_tl5ab"]
+
+[resource]
+shader = ExtResource("1_tl5ab")
+shader_parameter/tint_color = Color(0.053768028, 0.002925445, 0.00846333, 1)
+shader_parameter/tint_strength = 0.5

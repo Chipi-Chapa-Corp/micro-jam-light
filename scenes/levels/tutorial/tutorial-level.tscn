@@ -2,6 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://1gjuxa0ji5t3" path="res://scenes/levels/assets/test-tileset.tres" id="1_gyius"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/scene.tscn" id="2_gyius"]
+[ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="2_yq48w"]
 
 [node name="TutorialLevel" type="Node2D" unique_id=1604683869]
 
@@ -12,18 +13,21 @@ tile_map_data = PackedByteArray("AAAiABMAAAAEAAIAAAAhABMAAAAEAAIAAAAgABMAAAAEAAI
 tile_set = ExtResource("1_gyius")
 
 [node name="Left" type="TileMapLayer" parent="TileMap" unique_id=1977491853]
-visible = false
+material = ExtResource("2_yq48w")
 tile_map_data = PackedByteArray("AAAMABEAAAAFAAIAAAALABEAAAAEAAIAAAAKABEAAAADAAIAAAANAA8AAAAFAAIAAAAMAA8AAAAEAAIAAAALAA8AAAADAAIAAAAQAAsAAAAFAAIAAAAPAAsAAAAEAAIAAAAOAAsAAAADAAIAAAA=")
+enabled = false
 tile_set = ExtResource("1_gyius")
 
 [node name="Right" type="TileMapLayer" parent="TileMap" unique_id=351998107]
-visible = false
+material = ExtResource("2_yq48w")
 tile_map_data = PackedByteArray("AAAHABEAAAAFAAIAAAAGABEAAAAEAAIAAAAFABEAAAADAAIAAAAIAA8AAAAFAAIAAAAHAA8AAAAEAAIAAAAGAA8AAAADAAIAAAAKAAsAAAAFAAIAAAAJAAsAAAAEAAIAAAAIAAsAAAADAAIAAAA=")
+enabled = false
 tile_set = ExtResource("1_gyius")
 
 [node name="Bottom" type="TileMapLayer" parent="TileMap" unique_id=319566029]
-visible = false
+material = ExtResource("2_yq48w")
 tile_map_data = PackedByteArray("AAAJABAAAAAFAAIAAAAIABAAAAAGAAIAAAAIAA8AAAAGAAEAAAAIAA4AAAAGAAAAAAAKAA4AAAACAAIAAAAKAA0AAAACAAEAAAAKAAwAAAACAAAAAAAJAA4AAAAEAAEAAAAJAA0AAAAAAAEAAAAJAAwAAAAAAAAAAAANAAoAAAACAAIAAAANAAkAAAACAAEAAAANAAgAAAACAAAAAAAMAAoAAAABAAIAAAAMAAkAAAABAAEAAAAMAAgAAAABAAAAAAALAAoAAAAAAAIAAAALAAkAAAAAAAEAAAALAAgAAAAAAAAAAAA=")
+enabled = false
 tile_set = ExtResource("1_gyius")
 
 [node name="Player" parent="TileMap" unique_id=217580263 instance=ExtResource("2_gyius")]
