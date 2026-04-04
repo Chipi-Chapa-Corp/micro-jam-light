@@ -46,3 +46,4 @@ position = Vector2(198, 373)
 
 [node name="sfx_switch" type="AudioStreamPlayer" parent="." unique_id=168230477]
 stream = ExtResource("5_irrgu")
+volume_db = -10.0
