@@ -269,6 +269,7 @@ size = Vector2(17, 19)
 script = ExtResource("1_e4tch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1884640236]
+visible = false
 position = Vector2(0, -2.0000002)
 scale = Vector2(0.875, 0.86948824)
 sprite_frames = SubResource("SpriteFrames_3j4b4")

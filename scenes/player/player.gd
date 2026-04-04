@@ -12,11 +12,20 @@ const LAND_STEP_DELAY = 0.15
 @onready var sfx_jump = $sfxJump
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+var spawn_effect := preload("res://scenes/player/spawnEffect/spawnEffect.tscn")
 
+var able_to_move = false
 var was_on_floor = false
 var step_timer = 0.0
 var step_delay_timer = 0.0
-func _physics_process(delta: float) -> void:
+
+func _ready() -> void:
+	set_physics_process(false)
+	await spawn_appear_effect()
+	set_physics_process(true)
+	anim.visible = true
+	
+func _physics_process(delta: float) -> void:	
 	_resolve_stuck()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -55,6 +64,12 @@ func _physics_process(delta: float) -> void:
 	
 	was_on_floor = is_on_floor()
 
+func spawn_appear_effect() -> void:
+	var effect = spawn_effect.instantiate()
+	get_parent().add_child.call_deferred(effect)
+	effect.global_position = global_position
+	await effect.finished
+	
 func update_animation(direction: float) -> void:
 	if direction < 0:
 		anim.flip_h = true
