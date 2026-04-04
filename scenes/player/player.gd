@@ -131,23 +131,44 @@ func _resolve_stuck() -> void:
 	var push_direction := Vector2.ZERO
 	match tile_map.active_side_index:
 		0: push_direction = Vector2.DOWN # top shadow
-		1: push_direction = Vector2.RIGHT # left shadow
 		2: push_direction = Vector2.UP # bottom shadow
-		3: push_direction = Vector2.LEFT # right shadow
+		1, 3:
+			take_damage() # horizontal unstuck is not allowed
+			return
+		_:
+			return
 		
 	for i in range(1, 200, 2):
-		var offset = push_direction * i
+		var offset: Vector2 = push_direction * i
+		var target_position: Vector2 = global_position + offset
+
+		if _is_out_of_vertical_map_bounds(target_position):
+			take_damage()
+			return
+
 		if not test_move(global_transform.translated(offset), Vector2.ZERO):
-			global_position += offset
+			global_position = target_position
 			if push_direction == Vector2.UP:
 				velocity.y = min(velocity.y, -PUSH_FORCE) # upward bump
 			elif push_direction == Vector2.DOWN:
 				velocity.y = max(velocity.y, PUSH_FORCE)
-			elif push_direction == Vector2.LEFT:
-				velocity.x = min(velocity.x, -PUSH_FORCE)
-			elif push_direction == Vector2.RIGHT:
-				velocity.x = max(velocity.x, PUSH_FORCE)
 			break
+
+func _is_out_of_vertical_map_bounds(world_position: Vector2) -> bool:
+	var base_layer := tile_map.get_node_or_null("Base") as TileMapLayer
+	if base_layer == null:
+		return false
+
+	var used_rect: Rect2i = base_layer.get_used_rect()
+	if used_rect.size.y <= 0:
+		return false
+
+	var local_position: Vector2 = base_layer.to_local(world_position)
+	var map_cell: Vector2i = base_layer.local_to_map(local_position)
+	var min_y: int = used_rect.position.y
+	var max_y: int = used_rect.position.y + used_rect.size.y - 1
+
+	return map_cell.y < min_y or map_cell.y > max_y
 
 func _check_enemy_collision() -> void:
 	if is_exiting:
