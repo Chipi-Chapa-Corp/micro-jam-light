@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-State="*res://globals/state.gd"
 GlobalState="*res://globals/state.gd"
+State="*res://globals/state.gd"
 BgMusic="*uid://cayoyxiwur1am"
 
 [display]
@@ -34,6 +34,10 @@ window/size/height=1080.0
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+player=""
 
 [input]
 
