@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://2av8h4tf83gb"]
+
+[ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="2_r3pgy"]
+[ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="2_xeulx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cie25"]
+size = Vector2(1147.5, 282.5)
+
+[node name="Ilia" type="Node2D" unique_id=2111904197]
+
+[node name="Walls" type="Node" parent="." unique_id=2110898614]
+
+[node name="Floor" type="StaticBody2D" parent="Walls" unique_id=1620621601]
+position = Vector2(576, 504)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Floor" unique_id=1442402136]
+shape = SubResource("RectangleShape2D_cie25")
+
+[node name="Wall" type="StaticBody2D" parent="Walls" unique_id=564775596]
+position = Vector2(48, 221)
+scale = Vector2(0.08000243, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall" unique_id=1373234207]
+shape = SubResource("RectangleShape2D_cie25")
+
+[node name="Wall2" type="StaticBody2D" parent="Walls" unique_id=921454608]
+position = Vector2(1101, 221)
+scale = Vector2(0.08639551, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Wall2" unique_id=615035730]
+shape = SubResource("RectangleShape2D_cie25")
+
+[node name="Star" parent="." unique_id=909034735 instance=ExtResource("2_xeulx")]
+position = Vector2(660, 340)
+
+[node name="Player" parent="." unique_id=217580263 instance=ExtResource("2_r3pgy")]
+position = Vector2(443, 241)
