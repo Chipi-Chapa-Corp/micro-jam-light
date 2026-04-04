@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+	_check_enemy_collision()
 	
 	update_animation(direction)
 	
@@ -132,3 +133,28 @@ func _resolve_stuck() -> void:
 			elif push_direction == Vector2.RIGHT:
 				velocity.x = max(velocity.x, PUSH_FORCE)
 			break
+
+func _check_enemy_collision() -> void:
+	if is_exiting:
+		return
+
+	for i in range(get_slide_collision_count()):
+		var collision := get_slide_collision(i)
+		var collider := collision.get_collider()
+		if collider is Enemy:
+			take_damage()
+			return
+
+func take_damage() -> void:
+	if is_exiting:
+		return
+
+	print("Player died!")
+	# play_disappear_effect()
+
+	var effect = spawn_effect.instantiate()
+	get_parent().add_child(effect)
+	effect.global_position = global_position
+	effect.start_animation = "disappear"
+
+	await effect.finished

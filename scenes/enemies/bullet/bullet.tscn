@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c842plxbngqho"]
+
+[ext_resource type="Script" uid="uid://bctfk81moxmkh" path="res://scenes/enemies/bullet/bullet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://q7bb4jkpj2ax" path="res://scenes/enemies/bullet/assets/Cannonball1.png" id="2_b52me"]
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(8, 8)
+
+[node name="Bullet" type="Area2D" unique_id=1006065476]
+script = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667339773]
+shape = SubResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1543616727]
+texture = ExtResource("2_b52me")
