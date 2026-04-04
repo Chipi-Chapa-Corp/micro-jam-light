@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="2_gyius"]
 [ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="2_yq48w"]
 [ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://Sounds/whoosh.wav" id="5_irrgu"]
+[ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="6_5jvu3"]
+[ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="7_n0gcm"]
 
 [node name="Tutorial Level" type="Node2D" unique_id=1604683869]
 
@@ -47,3 +49,12 @@ volume_db = -10.0
 
 [node name="Player" parent="." unique_id=217580263 instance=ExtResource("2_gyius")]
 position = Vector2(271, 522)
+
+[node name="Star" parent="." unique_id=1733251554 instance=ExtResource("7_n0gcm")]
+position = Vector2(752, 436)
+
+[node name="Star2" parent="." unique_id=1704410359 instance=ExtResource("7_n0gcm")]
+position = Vector2(368, 385)
+
+[node name="Portal" parent="." unique_id=1866772128 instance=ExtResource("6_5jvu3")]
+position = Vector2(879, 263)

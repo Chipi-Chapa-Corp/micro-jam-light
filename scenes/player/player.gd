@@ -15,7 +15,7 @@ const LAND_STEP_DELAY = 0.15
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 var spawn_effect := preload("res://scenes/player/spawnEffect/spawnEffect.tscn")
 
-var able_to_move = false
+var is_exiting = false
 var was_on_floor = false
 var step_timer = 0.0
 var step_delay_timer = 0.0
@@ -69,6 +69,22 @@ func spawn_appear_effect() -> void:
 	var effect = spawn_effect.instantiate()
 	get_parent().add_child.call_deferred(effect)
 	effect.global_position = global_position
+	await effect.finished
+
+func play_disappear_effect() -> void:
+	if is_exiting:
+		return
+
+	is_exiting = true
+	set_physics_process(false)
+	velocity = Vector2.ZERO
+	anim.visible = false
+
+	var effect = spawn_effect.instantiate()
+	get_parent().add_child(effect)
+	effect.global_position = global_position
+	effect.start_animation = "disappear"
+
 	await effect.finished
 	
 func update_animation(direction: float) -> void:
