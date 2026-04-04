@@ -53,3 +53,5 @@ Button/styles/disabled = SubResource("StyleBoxTexture_u0b4a")
 Button/styles/hover = SubResource("StyleBoxTexture_xjn01")
 Button/styles/normal = SubResource("StyleBoxTexture_jytg8")
 Button/styles/pressed = SubResource("StyleBoxTexture_aoiyn")
+HeaderLarge/font_sizes/font_size = 96
+HeaderSmall/font_sizes/font_size = 35
