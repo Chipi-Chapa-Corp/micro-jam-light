@@ -37,8 +37,8 @@ theme = ExtResource("1_h4857")
 theme_type_variation = &"HeaderSmall"
 text = "Hanna Hliavitskaya aka Cvirlik
 Artem Prokop aka ExposedCat
-Ilya Timofeev aka KRASAV4EK
-Grigoriy Nikolaenkov aka Dyseff"
+Ilia Timofeev aka KRASAV4EK
+Grigorii Nikolaenkov aka brancherday"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -67,8 +67,12 @@ offset_bottom = 623.0
 theme = ExtResource("1_h4857")
 theme_type_variation = &"HeaderSmall"
 text = "Sound 1 by Author 1
-Sound 1 by Author 1
-Sound 1 by Author 1
+A lot of sounds from https://kenney.nl
+
+\"Equatorial Complex \" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+
 Image 1 by Author 1
 Image 1 by Author 1
 Image 1 by Author 1

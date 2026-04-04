@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" format=3 uid="uid://dcgb3olcvd43g"]
+[gd_resource type="TileSet" format=3 uid="uid://b4rgxhn8gxr6n"]
 
 [ext_resource type="Shader" uid="uid://brpvv0wiu2mrw" path="res://scenes/levels/materials/shaders/shadow_gradient.gdshader" id="1_p2c62"]
 [ext_resource type="Texture2D" uid="uid://bcbgtleanrgbp" path="res://scenes/levels/assets/shadow.png" id="2_t8ckb"]
