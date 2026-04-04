@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://d2l2wxt7kis02"]
 
-[ext_resource type="Script" uid="uid://vq00ot2uic2w" path="res://scenes/levels/tile-control.gd" id="1_dywbp"]
+[ext_resource type="Script" path="res://scenes/levels/tile-control.gd" id="1_dywbp"]
 [ext_resource type="TileSet" uid="uid://1gjuxa0ji5t3" path="res://scenes/levels/assets/test-tileset.tres" id="2_1seuy"]
 [ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="3_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="4_8a7m2"]

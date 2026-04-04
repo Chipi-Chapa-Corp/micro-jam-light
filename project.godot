@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalState="*res://globals/state.gd"
 State="*res://globals/state.gd"
+GlobalState="*res://globals/state.gd"
 BgMusic="*uid://cayoyxiwur1am"
 
 [display]
