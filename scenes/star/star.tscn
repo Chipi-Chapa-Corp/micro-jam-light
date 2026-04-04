@@ -2,9 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cjjw7xadw7e0j" path="res://scenes/star/assets/star.png" id="1_3ji66"]
 [ext_resource type="Script" uid="uid://bbcq0r5wuxons" path="res://scenes/star/star.gd" id="2_e8616"]
+[ext_resource type="AudioStream" uid="uid://bttekpfqq0m03" path="res://Sounds/starTook.wav" id="3_buljs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icysq"]
-size = Vector2(18, 18)
+size = Vector2(10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8616"]
 atlas = ExtResource("1_3ji66")
@@ -63,13 +64,21 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Star" type="Node2D" unique_id=909034735]
+[node name="Star" type="Area2D" unique_id=1733251554]
 script = ExtResource("2_e8616")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1114053513]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_icysq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1458335497]
 sprite_frames = SubResource("SpriteFrames_3ji66")
 animation = &"idle"
 frame_progress = 0.6209566
+
+[node name="sfxCollect" type="AudioStreamPlayer2D" parent="." unique_id=1060503830]
+stream = ExtResource("3_buljs")
+volume_db = 5.063
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="sfxCollect" to="." method="_on_sfx_collect_finished"]
