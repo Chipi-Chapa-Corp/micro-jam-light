@@ -18,7 +18,7 @@ func _on_body_entered(body: Node) -> void:
 		return
 
 	activated = true
-	monitoring = false
+	set_deferred("monitoring", false)
 	sfx_exit.play()
 
 	if body.has_method("play_disappear_effect"):

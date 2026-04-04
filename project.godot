@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-State="*res://globals/state.gd"
 GlobalState="*res://globals/state.gd"
+State="*res://globals/state.gd"
 BgMusic="*uid://cayoyxiwur1am"
+PauseMenu="*res://ui/pause_menu.tscn"
 
 [display]
 
