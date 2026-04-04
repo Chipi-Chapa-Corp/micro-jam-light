@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const PUSH_FORCE = 100.0
 const STEP_INTERVAL = 0.2
 const LAND_STEP_DELAY = 0.15
 
@@ -13,7 +14,9 @@ const LAND_STEP_DELAY = 0.15
 var was_on_floor = false
 var step_timer = 0.0
 var step_delay_timer = 0.0
+
 func _physics_process(delta: float) -> void:
+	_resolve_stuck()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -48,3 +51,33 @@ func _physics_process(delta: float) -> void:
 		step_timer = 0.0
 	
 	was_on_floor = is_on_floor()
+
+
+func _resolve_stuck() -> void:
+	if not test_move(global_transform, Vector2.ZERO):
+		return
+		
+	var tile_control = get_parent()
+	if not tile_control or not "active_side_index" in tile_control:
+		return
+		
+	var push_direction := Vector2.ZERO
+	match tile_control.active_side_index:
+		0: push_direction = Vector2.DOWN # top shadow
+		1: push_direction = Vector2.RIGHT # left shadow
+		2: push_direction = Vector2.UP # bottom shadow
+		3: push_direction = Vector2.LEFT # right shadow
+		
+	for i in range(1, 200, 2):
+		var offset = push_direction * i
+		if not test_move(global_transform.translated(offset), Vector2.ZERO):
+			global_position += offset
+			if push_direction == Vector2.UP:
+				velocity.y = min(velocity.y, -PUSH_FORCE) # upward bump
+			elif push_direction == Vector2.DOWN:
+				velocity.y = max(velocity.y, PUSH_FORCE)
+			elif push_direction == Vector2.LEFT:
+				velocity.x = min(velocity.x, -PUSH_FORCE)
+			elif push_direction == Vector2.RIGHT:
+				velocity.x = max(velocity.x, PUSH_FORCE)
+			break

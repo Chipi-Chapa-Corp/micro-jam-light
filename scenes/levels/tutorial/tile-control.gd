@@ -7,7 +7,7 @@ extends Node2D
 @export var right_layer: TileMapLayer
 
 var _side_layers: Array[TileMapLayer] = []
-var _active_side_index := 0
+var active_side_index := 0
 
 
 func _ready() -> void:
@@ -24,7 +24,7 @@ func _ready() -> void:
 	
 	base_layer.enabled = true
 
-	_active_side_index = 0
+	active_side_index = 0
 	_apply_layer_state()
 
 
@@ -40,7 +40,7 @@ func _step_side_layer(direction: int) -> void:
 	if _side_layers.is_empty():
 		return
 
-	_active_side_index = posmod(_active_side_index + direction, _side_layers.size())
+	active_side_index = posmod(active_side_index + direction, _side_layers.size())
 	_apply_layer_state()
 
 
@@ -48,7 +48,7 @@ func _apply_layer_state() -> void:
 	base_layer.enabled = true
 
 	for i in range(_side_layers.size()):
-		_side_layers[i].enabled = (i == _active_side_index)
+		_side_layers[i].enabled = (i == active_side_index)
 
 
 func _add_side_layer(layer: TileMapLayer, layer_name: String) -> void:
