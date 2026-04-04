@@ -1,3 +1,4 @@
+class_name GameState
 extends Node
 
 const LEVEL_COUNT: int = 4
