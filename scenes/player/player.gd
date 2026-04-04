@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var tile_map: Node2D = $"../TileMap"
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -25,7 +26,7 @@ func _ready() -> void:
 	set_physics_process(true)
 	anim.visible = true
 	
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	_resolve_stuck()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -87,20 +88,16 @@ func update_animation(direction: float) -> void:
 		else:
 			play_anim("idle")
 
-func play_anim(name: String) -> void:
-	if anim.animation != name:
-		anim.play(name)
+func play_anim(animation_name: String) -> void:
+	if anim.animation != animation_name:
+		anim.play(animation_name)
 
 func _resolve_stuck() -> void:
 	if not test_move(global_transform, Vector2.ZERO):
 		return
-		
-	var tile_control = get_parent()
-	if not tile_control or not "active_side_index" in tile_control:
-		return
-		
+
 	var push_direction := Vector2.ZERO
-	match tile_control.active_side_index:
+	match tile_map.active_side_index:
 		0: push_direction = Vector2.DOWN # top shadow
 		1: push_direction = Vector2.RIGHT # left shadow
 		2: push_direction = Vector2.UP # bottom shadow
