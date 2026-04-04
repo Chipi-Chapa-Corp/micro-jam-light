@@ -285,8 +285,8 @@ volume_db = -2.936
 
 [node name="sfxFallAfterJump" type="AudioStreamPlayer2D" parent="." unique_id=1506987130]
 stream = ExtResource("3_e8u37")
-volume_db = 4.084
+volume_db = 2.0
 
 [node name="sfxJump" type="AudioStreamPlayer2D" parent="." unique_id=528828447]
 stream = ExtResource("5_itrdm")
-volume_db = -5.258
+volume_db = -7.595
