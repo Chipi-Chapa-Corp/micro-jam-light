@@ -1,0 +1,97 @@
+class_name GlobalState
+extends Node
+
+const LEVEL_COUNT: int = 4
+const _NOT_STARTED_TICK: int = -1
+
+var _stars_by_level: Array[int] = [0, 0, 0, 0]
+var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0, 0.0]
+var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+
+
+func _is_valid_level(level: int) -> bool:
+	return level >= 1 and level <= LEVEL_COUNT
+
+
+func _to_index(level: int) -> int:
+	return level - 1
+
+
+func start_level(level: int) -> void:
+	if not _is_valid_level(level):
+		push_warning("start_level: level must be between 1 and %d" % LEVEL_COUNT)
+		return
+
+	_start_tick_by_level[_to_index(level)] = Time.get_ticks_msec()
+
+
+func end_level(level: int, stars: int = -1) -> float:
+	if not _is_valid_level(level):
+		push_warning("end_level: level must be between 1 and %d" % LEVEL_COUNT)
+		return 0.0
+
+	var index: int = _to_index(level)
+	var start_tick: int = _start_tick_by_level[index]
+	if start_tick == _NOT_STARTED_TICK:
+		push_warning("end_level: level %d was not started. Call start_level(level) first." % level)
+		return 0.0
+
+	var elapsed_seconds: float = (Time.get_ticks_msec() - start_tick) / 1000.0
+	_set_level_time_seconds(level, elapsed_seconds)
+
+	if stars >= 0:
+		_set_level_stars(level, stars)
+
+	_start_tick_by_level[index] = _NOT_STARTED_TICK
+	return elapsed_seconds
+
+func _set_level_stars(level: int, stars: int) -> void:
+	if not _is_valid_level(level):
+		push_warning("_set_level_stars: level must be between 1 and %d" % LEVEL_COUNT)
+		return
+
+	_stars_by_level[_to_index(level)] = max(0, stars)
+
+
+func get_level_stars(level: int) -> int:
+	if not _is_valid_level(level):
+		push_warning("get_level_stars: level must be between 1 and %d" % LEVEL_COUNT)
+		return 0
+
+	return _stars_by_level[_to_index(level)]
+
+
+func _set_level_time_seconds(level: int, time_seconds: float) -> void:
+	if not _is_valid_level(level):
+		push_warning("_set_level_time_seconds: level must be between 1 and %d" % LEVEL_COUNT)
+		return
+
+	_time_by_level_seconds[_to_index(level)] = max(0.0, time_seconds)
+
+
+func get_level_time_seconds(level: int) -> float:
+	if not _is_valid_level(level):
+		push_warning("get_level_time_seconds: level must be between 1 and %d" % LEVEL_COUNT)
+		return 0.0
+
+	return _time_by_level_seconds[_to_index(level)]
+
+
+func get_level_result(level: int) -> Dictionary:
+	return {
+		"stars": get_level_stars(level),
+		"time_seconds": get_level_time_seconds(level)
+	}
+
+
+func get_total_stars() -> int:
+	var total: int = 0
+	for stars: int in _stars_by_level:
+		total += stars
+	return total
+
+
+func reset_progress() -> void:
+	_stars_by_level = [0, 0, 0, 0]
+	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0]
+	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
