@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cayoyxiwur1am"]
+
+[ext_resource type="AudioStream" uid="uid://dh7ccfq7o4y04" path="res://Sounds/Equatorial Complex.mp3" id="1_mken4"]
+
+[node name="BgMusic" type="Node2D" unique_id=416588550]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=158803257]
+stream = ExtResource("1_mken4")
+autoplay = true
