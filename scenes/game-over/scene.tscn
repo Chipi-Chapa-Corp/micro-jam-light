@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cj4kmk7cfjujj" path="res://scenes/game-over/script.gd" id="1_jm6rw"]
 [ext_resource type="Theme" uid="uid://dq5he3f3qilxj" path="res://scenes/main-menu/gui-elements/theme.tres" id="2_v4j2r"]
+[ext_resource type="Script" uid="uid://d1oy0wi0l2l2l" path="res://scenes/main-menu/control_background.gd" id="3_fsurh"]
+[ext_resource type="Texture2D" uid="uid://biu5eykdnhd6j" path="res://scenes/main-menu/gui-assets/images/backgrounds/1-red.png" id="4_u6xtm"]
+[ext_resource type="Texture2D" uid="uid://byc87vq04od6r" path="res://scenes/main-menu/gui-assets/images/backgrounds/2-red.png" id="5_uf6ia"]
+[ext_resource type="Texture2D" uid="uid://cupw8bspvwe3n" path="res://scenes/main-menu/gui-assets/images/backgrounds/3-red.png" id="6_brcow"]
 
 [node name="Game Over" type="Control" unique_id=472900240]
 layout_mode = 3
@@ -13,7 +17,73 @@ grow_vertical = 2
 theme = ExtResource("2_v4j2r")
 script = ExtResource("1_jm6rw")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=157731610]
+[node name="ControlBackground" type="Control" parent="." unique_id=1173476054]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fsurh")
+smooth_speed = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="ControlBackground" unique_id=974533593]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_u6xtm")
+stretch_mode = 5
+
+[node name="CloudsBack" type="TextureRect" parent="ControlBackground" unique_id=1071823899]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("5_uf6ia")
+
+[node name="CloudsFront" type="TextureRect" parent="ControlBackground" unique_id=1198246343]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("6_brcow")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1844252600]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,21 +95,28 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=821383185]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1040796986]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=24093300]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1097377342]
 layout_mode = 2
-theme_override_font_sizes/font_size = 72
+theme = ExtResource("2_v4j2r")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+theme_override_constants/outline_size = 20
 text = "Game Over"
 
-[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=2100776037]
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=957611671]
 layout_mode = 2
-theme_override_font_sizes/font_size = 34
-text = "Level Metrics"
+theme = ExtResource("2_v4j2r")
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+theme_override_constants/outline_size = 20
+text = "Level Metrics:"
 
-[node name="LevelRows" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1935733624]
+[node name="LevelRows" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1798838479]
 layout_mode = 2
+size_flags_horizontal = 0
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8

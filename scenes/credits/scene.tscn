@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://f63d185udmxp" path="res://scenes/main-menu/gui-assets/fonts/Geo-Regular.ttf" id="3_travo"]
 [ext_resource type="Texture2D" uid="uid://1qk3r4jar6m4" path="res://scenes/main-menu/gui-assets/images/backgrounds/2.png" id="4_ypr22"]
 [ext_resource type="Texture2D" uid="uid://b6ujnf5xrwyr4" path="res://scenes/main-menu/gui-assets/images/backgrounds/3.png" id="5_qkc03"]
-[ext_resource type="Texture2D" uid="uid://dhb2i0cx58bil" path="res://scenes/main-menu/gui-assets/images/icons/close.png" id="6_0a0dw"]
+[ext_resource type="PackedScene" uid="uid://tr5f7e6u6fip" path="res://scenes/main-menu/gui-elements/close-button.tscn" id="8_0a0dw"]
 
 [node name="Credits" type="Control" unique_id=1663182119]
 layout_mode = 3
@@ -224,17 +224,16 @@ text = "Platformer tilesets and entities by CraftPix"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="." unique_id=1954058553]
+[node name="CloseButton" parent="." unique_id=1613189505 instance=ExtResource("8_0a0dw")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -25.0
+offset_right = 0.0
 offset_bottom = 25.0
 grow_horizontal = 0
 scale = Vector2(3, 3)
 pivot_offset_ratio = Vector2(1, 0)
-icon = ExtResource("6_0a0dw")
-flat = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_button_pressed"]
