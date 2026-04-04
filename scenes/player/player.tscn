@@ -262,19 +262,21 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4tch"]
-size = Vector2(18, 18)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gtgg"]
+size = Vector2(17, 19)
 
 [node name="Player" type="CharacterBody2D" unique_id=217580263]
 script = ExtResource("1_e4tch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1884640236]
-scale = Vector2(0.5635499, 0.56)
+position = Vector2(0, -2.0000002)
+scale = Vector2(0.875, 0.86948824)
 sprite_frames = SubResource("SpriteFrames_3j4b4")
 animation = &"run"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1490921346]
-shape = SubResource("RectangleShape2D_e4tch")
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_5gtgg")
 
 [node name="sfx_step" type="AudioStreamPlayer2D" parent="." unique_id=134411377]
 stream = ExtResource("3_itrdm")
