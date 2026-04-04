@@ -1,4 +1,3 @@
-class_name GlobalState
 extends Node
 
 const LEVEL_COUNT: int = 4
