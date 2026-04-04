@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="2_yq48w"]
 [ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://Sounds/whoosh.wav" id="5_irrgu"]
 
-[node name="TutorialLevel" type="Node2D" unique_id=1604683869]
+[node name="Tutorial Level" type="Node2D" unique_id=1604683869]
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("1_5ehse")
