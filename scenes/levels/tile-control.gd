@@ -6,6 +6,9 @@ extends Node2D
 @export var bottom_layer: TileMapLayer
 @export var right_layer: TileMapLayer
 
+@export var sfx_switch: AudioStreamPlayer
+
+
 var _side_layers: Array[TileMapLayer] = []
 var active_side_index := 0
 
@@ -43,6 +46,9 @@ func _set_active_side(index: int) -> void:
 	if index >= 0 and index < _side_layers.size():
 		active_side_index = index
 		_apply_layer_state()
+		
+		if sfx_switch:
+			sfx_switch.play()
 
 
 func _apply_layer_state() -> void:
