@@ -1,0 +1,264 @@
+[gd_resource type="TileSet" format=3 uid="uid://dcgb3olcvd43g"]
+
+[ext_resource type="Shader" uid="uid://brpvv0wiu2mrw" path="res://scenes/levels/materials/shaders/shadow_gradient.gdshader" id="1_p2c62"]
+[ext_resource type="Texture2D" uid="uid://bcbgtleanrgbp" path="res://scenes/levels/assets/shadow.png" id="2_t8ckb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kcwg"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 0
+shader_parameter/step_index = 0
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13lov"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 0
+shader_parameter/step_index = 1
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nyot1"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 0
+shader_parameter/step_index = 2
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66nrt"]
+texture = ExtResource("2_t8ckb")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 7
+0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_3kcwg")
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_13lov")
+0:0/1/terrain_set = 0
+0:0/1/terrain = 0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1/terrains_peering_bit/bottom_side = 0
+0:0/1/terrains_peering_bit/top_side = 0
+0:0/3 = 3
+0:0/3/material = SubResource("ShaderMaterial_nyot1")
+0:0/3/terrain_set = 0
+0:0/3/terrain = 0
+0:0/3/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/3/terrains_peering_bit/top_side = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2c62"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 1
+shader_parameter/step_index = 0
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8ckb"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 1
+shader_parameter/step_index = 1
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_66nrt"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 1
+shader_parameter/step_index = 2
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcm1e"]
+texture = ExtResource("2_t8ckb")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_p2c62")
+0:0/0/terrain_set = 1
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/terrains_peering_bit/top_side = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_t8ckb")
+0:0/1/terrain_set = 1
+0:0/1/terrain = 0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1/terrains_peering_bit/bottom_side = 0
+0:0/1/terrains_peering_bit/top_side = 0
+0:0/2 = 2
+0:0/2/material = SubResource("ShaderMaterial_66nrt")
+0:0/2/terrain_set = 1
+0:0/2/terrain = 0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/2/terrains_peering_bit/bottom_side = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcm1e"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 2
+shader_parameter/step_index = 0
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uiiec"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 2
+shader_parameter/step_index = 1
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjbmr"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 2
+shader_parameter/step_index = 2
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uiiec"]
+texture = ExtResource("2_t8ckb")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_rcm1e")
+0:0/0/terrain_set = 2
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_uiiec")
+0:0/1/terrain_set = 2
+0:0/1/terrain = 0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1/terrains_peering_bit/right_side = 0
+0:0/1/terrains_peering_bit/left_side = 0
+0:0/2 = 2
+0:0/2/material = SubResource("ShaderMaterial_bjbmr")
+0:0/2/terrain_set = 2
+0:0/2/terrain = 0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/2/terrains_peering_bit/left_side = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnssc"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 3
+shader_parameter/step_index = 0
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bdyvo"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 3
+shader_parameter/step_index = 1
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f7ysa"]
+shader = ExtResource("1_p2c62")
+shader_parameter/shadow_color = Color(0.0667, 0.0824, 0.1804, 0.55)
+shader_parameter/direction = 3
+shader_parameter/step_index = 2
+shader_parameter/tile_size = 32.0
+shader_parameter/max_tiles = 3.0
+shader_parameter/pixel_block_px = 6.0
+shader_parameter/alpha_steps = 0.2
+shader_parameter/distortion_px = 2.5
+shader_parameter/distortion_block_px = 4.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjbmr"]
+texture = ExtResource("2_t8ckb")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_hnssc")
+0:0/0/terrain_set = 3
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/terrains_peering_bit/left_side = 0
+0:0/1 = 1
+0:0/1/material = SubResource("ShaderMaterial_bdyvo")
+0:0/1/terrain_set = 3
+0:0/1/terrain = 0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1/terrains_peering_bit/right_side = 0
+0:0/1/terrains_peering_bit/left_side = 0
+0:0/2 = 2
+0:0/2/material = SubResource("ShaderMaterial_f7ysa")
+0:0/2/terrain_set = 3
+0:0/2/terrain = 0
+0:0/2/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/2/terrains_peering_bit/right_side = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.70400566, 2.4065375e-07, 0.36506605, 1)
+terrain_set_1/mode = 0
+terrain_set_1/terrain_0/name = "Terrain 0"
+terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+terrain_set_2/mode = 0
+terrain_set_2/terrain_0/name = "Terrain 0"
+terrain_set_2/terrain_0/color = Color(0.39829087, 0.162083, 0.9044652, 1)
+terrain_set_3/mode = 0
+terrain_set_3/terrain_0/name = "Terrain 0"
+terrain_set_3/terrain_0/color = Color(2.1658838e-07, 0.4490729, 0.40644744, 1)
+sources/0 = SubResource("TileSetAtlasSource_66nrt")
+sources/1 = SubResource("TileSetAtlasSource_rcm1e")
+sources/2 = SubResource("TileSetAtlasSource_uiiec")
+sources/3 = SubResource("TileSetAtlasSource_bjbmr")
