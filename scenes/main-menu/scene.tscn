@@ -97,7 +97,7 @@ offset_bottom = 173.0
 grow_horizontal = 2
 theme = ExtResource("1_3jxos")
 theme_override_colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
-theme_override_constants/outline_size = 16
+theme_override_constants/outline_size = 20
 theme_override_font_sizes/font_size = 127
 text = "Solid Shadows"
 

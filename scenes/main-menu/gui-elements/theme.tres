@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2bdlq682fk71" path="res://scenes/main-menu/gui-assets/images/buttons/button-hover-primary.png" id="2_jytg8"]
 [ext_resource type="Texture2D" uid="uid://c4lqxyj2ixck7" path="res://scenes/main-menu/gui-assets/images/buttons/button-released-primary.png" id="2_ul21t"]
 [ext_resource type="Texture2D" uid="uid://8lteb58a1ekw" path="res://scenes/main-menu/gui-assets/images/buttons/button-pressed-primary.png" id="4_b3jrt"]
+[ext_resource type="FontFile" uid="uid://f63d185udmxp" path="res://scenes/main-menu/gui-assets/fonts/Geo-Regular.ttf" id="5_2k13m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_311dl"]
 load_path = "res://.godot/imported/button-disabled-primary.png-79302367619bf8ddb89728052ffb3396.ctex"
@@ -45,13 +46,17 @@ texture_margin_right = 4.0
 texture_margin_bottom = 5.0
 
 [resource]
-default_font = ExtResource("1_hdlwd")
+default_font = ExtResource("5_2k13m")
 default_font_size = 32
-Button/font_sizes/font_size = 28
+Button/font_sizes/font_size = 32
 Button/fonts/font = ExtResource("1_hdlwd")
 Button/styles/disabled = SubResource("StyleBoxTexture_u0b4a")
 Button/styles/hover = SubResource("StyleBoxTexture_xjn01")
 Button/styles/normal = SubResource("StyleBoxTexture_jytg8")
 Button/styles/pressed = SubResource("StyleBoxTexture_aoiyn")
 HeaderLarge/font_sizes/font_size = 96
+HeaderLarge/fonts/font = ExtResource("1_hdlwd")
 HeaderSmall/font_sizes/font_size = 35
+HeaderSmall/fonts/font = ExtResource("1_hdlwd")
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_hdlwd")
