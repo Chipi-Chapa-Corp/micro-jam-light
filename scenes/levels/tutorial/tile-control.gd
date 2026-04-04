@@ -29,19 +29,20 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo:
-		if event.keycode == KEY_F:
-			_step_side_layer(1)
-		elif event.keycode == KEY_E:
-			_step_side_layer(-1)
+	if event.is_action_pressed("shadow_down"):
+		_set_active_side(0)
+	elif event.is_action_pressed("shadow_right"):
+		_set_active_side(1)
+	elif event.is_action_pressed("shadow_up"):
+		_set_active_side(2)
+	elif event.is_action_pressed("shadow_left"):
+		_set_active_side(3)
 
 
-func _step_side_layer(direction: int) -> void:
-	if _side_layers.is_empty():
-		return
-
-	active_side_index = posmod(active_side_index + direction, _side_layers.size())
-	_apply_layer_state()
+func _set_active_side(index: int) -> void:
+	if index >= 0 and index < _side_layers.size():
+		active_side_index = index
+		_apply_layer_state()
 
 
 func _apply_layer_state() -> void:
