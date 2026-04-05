@@ -17,6 +17,7 @@ const MAX_Y = 640.0
 @onready var sfx_fall_after_jump = $sfxFallAfterJump
 @onready var sfx_jump = $sfxJump
 @onready var sfx_death = $sfxDeath
+@onready var sfx_spawn = $sfxSpawn
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 var spawn_effect := preload("res://scenes/player/spawnEffect/spawnEffect.tscn")
@@ -94,6 +95,7 @@ func _check_out_of_bounds() -> void:
 		take_damage()
 
 func spawn_appear_effect() -> void:
+	sfx_spawn.play()
 	var effect = spawn_effect.instantiate()
 	get_parent().add_child.call_deferred(effect)
 	effect.global_position = global_position

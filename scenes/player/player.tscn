@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8gwc24m1glfe" path="res://scenes/player/assets/Jump.png" id="5_je7p5"]
 [ext_resource type="Texture2D" uid="uid://c50p5gd4hcafr" path="res://scenes/player/assets/Run.png" id="6_fm80t"]
 [ext_resource type="AudioStream" uid="uid://bnjrckpn4agne" path="res://sounds/error_005.ogg" id="10_h17s1"]
+[ext_resource type="AudioStream" uid="uid://d1gftnk78pqgr" path="res://sounds/spawn.wav" id="11_je7p5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgqa7"]
 atlas = ExtResource("2_5gtgg")
@@ -296,3 +297,6 @@ volume_db = -7.595
 [node name="sfxDeath" type="AudioStreamPlayer2D" parent="." unique_id=657215247]
 stream = ExtResource("10_h17s1")
 volume_db = 6.0
+
+[node name="sfxSpawn" type="AudioStreamPlayer2D" parent="." unique_id=2076173159]
+stream = ExtResource("11_je7p5")
