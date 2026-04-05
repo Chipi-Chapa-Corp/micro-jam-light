@@ -174,7 +174,7 @@ theme_override_colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("3_travo")
 theme_override_font_sizes/font_size = 20
-text = "Enviromental sounds from https://kenney.nl"
+text = "Environmental sounds from https://kenney.nl"
 horizontal_alignment = 1
 vertical_alignment = 1
 
