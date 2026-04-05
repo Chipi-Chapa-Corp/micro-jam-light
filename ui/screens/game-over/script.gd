@@ -33,7 +33,9 @@ func _build_level_row(level: int) -> HBoxContainer:
 	var result: Dictionary = GlobalState.get_level_result(level)
 	var stars: int = int(result.get("stars", 0))
 	var time_seconds: float = float(result.get("time_seconds", 0.0))
-	metrics_label.text = "Level %d   Stars: %d   Time: %s" % [level, stars, _format_time(time_seconds)]
+	var skipped: bool = bool(result.get("skipped", false))
+	var skipped_text: String = "   SKIPPED" if skipped else ""
+	metrics_label.text = "Level %d   Stars: %d   Time: %s%s" % [level, stars, _format_time(time_seconds), skipped_text]
 
 	row.add_child(metrics_label)
 

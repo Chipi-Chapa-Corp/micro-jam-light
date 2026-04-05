@@ -13,6 +13,8 @@ extends Node2D
 
 const DEFAULT_PLATFORM_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/platform_top_light.tres"
 const DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH := "res://scenes/levels/materials/viewport_edge_glow.tres"
+const HOLD_DURATION_SECONDS := 3.0
+const GAME_OVER_SCENE_PATH := "res://ui/screens/game-over/scene.tscn"
 
 var _side_layers: Array[TileMapLayer] = []
 var active_side_index := 0
@@ -20,6 +22,9 @@ var previous_side_index := -1
 var _current_tween: Tween
 var _layer_shadow_materials: Array = []
 var _viewport_glow_shader_material: ShaderMaterial
+var _restart_hold_seconds := 0.0
+var _skip_hold_seconds := 0.0
+var _is_level_transitioning := false
 
 func _ready() -> void:
 	if base_layer == null:
@@ -46,6 +51,7 @@ func _ready() -> void:
 
 	active_side_index = 0
 	_apply_layer_state(true)
+	set_process(true)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -57,6 +63,54 @@ func _unhandled_input(event: InputEvent) -> void:
 		_set_active_side(2)
 	elif event.is_action_pressed("shadow_left"):
 		_set_active_side(3)
+
+
+func _process(delta: float) -> void:
+	if _is_level_transitioning:
+		return
+
+	_restart_hold_seconds = _update_hold_timer(_is_restart_pressed(), _restart_hold_seconds, delta)
+	_skip_hold_seconds = _update_hold_timer(_is_skip_pressed(), _skip_hold_seconds, delta)
+
+	if _restart_hold_seconds >= HOLD_DURATION_SECONDS:
+		_trigger_level_restart()
+	elif _skip_hold_seconds >= HOLD_DURATION_SECONDS:
+		_trigger_level_skip()
+
+
+func _update_hold_timer(is_pressed: bool, hold_seconds: float, delta: float) -> float:
+	if is_pressed:
+		return min(hold_seconds + delta, HOLD_DURATION_SECONDS)
+	return 0.0
+
+
+func _is_restart_pressed() -> bool:
+	return Input.is_action_pressed("restart") or Input.is_key_pressed(KEY_R)
+
+
+func _is_skip_pressed() -> bool:
+	return Input.is_action_pressed("skip") or Input.is_key_pressed(KEY_BACKSPACE)
+
+
+func _trigger_level_restart() -> void:
+	_is_level_transitioning = true
+	_restart_hold_seconds = 0.0
+	_skip_hold_seconds = 0.0
+	GlobalState.reset_current_level()
+	get_tree().reload_current_scene()
+
+
+func _trigger_level_skip() -> void:
+	_is_level_transitioning = true
+	_restart_hold_seconds = 0.0
+	_skip_hold_seconds = 0.0
+	GlobalState.end_level(true)
+	var next_scene_path: String = GlobalState.get_current_level_scene()
+	if next_scene_path.is_empty():
+		get_tree().change_scene_to_file(GAME_OVER_SCENE_PATH)
+	else:
+		GlobalState.start_level()
+		get_tree().change_scene_to_file(next_scene_path)
 
 
 func _set_active_side(index: int) -> void:

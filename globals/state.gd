@@ -14,6 +14,7 @@ const _NOT_STARTED_TICK: int = -1
 var current_level: int = 1
 var _stars_by_level: Array[int] = [0, 0, 0, 0, 0]
 var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0]
+var _skipped_by_level: Array[bool] = [false, false, false, false, false]
 var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
 
 func get_current_level_scene() -> String:
@@ -39,11 +40,12 @@ func start_level(level: int = -1) -> void:
 	_start_tick_by_level[_to_index(level)] = Time.get_ticks_msec()
 
 
-func end_level() -> float:
+func end_level(skipped: bool = false) -> float:
 	var index: int = _to_index(current_level)
 	var start_tick: int = _start_tick_by_level[index]
 	var elapsed_seconds: float = (Time.get_ticks_msec() - start_tick) / 1000.0
 	_set_level_time_seconds(current_level, elapsed_seconds)
+	_set_level_skipped(current_level, skipped)
 	_start_tick_by_level[index] = _NOT_STARTED_TICK
 	current_level += 1
 	return elapsed_seconds
@@ -82,13 +84,33 @@ func get_level_time_seconds(level: int = -1) -> float:
 	return _time_by_level_seconds[_to_index(level)]
 
 
+func _set_level_skipped(level: int, skipped: bool) -> void:
+	if not _is_valid_level(level):
+		push_warning("_set_level_skipped: level must be between 1 and %d" % LEVEL_COUNT)
+		return
+
+	_skipped_by_level[_to_index(level)] = skipped
+
+
+func is_level_skipped(level: int = -1) -> bool:
+	if level == -1:
+		level = current_level
+
+	if not _is_valid_level(level):
+		push_warning("is_level_skipped: level must be between 1 and %d" % LEVEL_COUNT)
+		return false
+
+	return _skipped_by_level[_to_index(level)]
+
+
 func get_level_result(level: int = -1) -> Dictionary:
 	if level == -1:
 		level = current_level
 
 	return {
 		"stars": get_level_stars(level),
-		"time_seconds": get_level_time_seconds(level)
+		"time_seconds": get_level_time_seconds(level),
+		"skipped": is_level_skipped(level)
 	}
 
 
@@ -103,8 +125,10 @@ func reset_progress() -> void:
 	current_level = 1
 	_stars_by_level = [0, 0, 0, 0, 0]
 	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0, 0.0]
+	_skipped_by_level = [false, false, false, false, false]
 	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
 
 func reset_current_level() -> void:
 	_stars_by_level[_to_index(current_level)] = 0
+	_skipped_by_level[_to_index(current_level)] = false
 	start_level(current_level)
