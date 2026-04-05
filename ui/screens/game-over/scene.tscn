@@ -106,7 +106,7 @@ theme = ExtResource("2_v4j2r")
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
 theme_override_constants/outline_size = 20
-text = "Game Over"
+text = "Game Completed!"
 
 [node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=957611671]
 layout_mode = 2
@@ -114,7 +114,7 @@ theme = ExtResource("2_v4j2r")
 theme_type_variation = &"HeaderMedium"
 theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
 theme_override_constants/outline_size = 20
-text = "Level Metrics:"
+text = "Total time: "
 
 [node name="LevelRows" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1798838479]
 layout_mode = 2

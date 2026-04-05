@@ -6,10 +6,20 @@ const TOOLTIP_BG_COLOR: Color = Color(0.5137255, 0.10980392, 0.3254902, 0.8)
 const MAIN_MENU_SCENE: PackedScene = preload("res://ui/screens/main-menu/scene.tscn")
 
 @onready var level_rows: VBoxContainer = $MarginContainer/VBoxContainer/LevelRows
+@onready var total_time_label: Label = $MarginContainer/VBoxContainer/Subtitle
 @onready var replay_button_tooltip_theme: Theme = _create_replay_button_tooltip_theme()
 
 func _ready() -> void:
+	_update_total_time()
 	_populate_level_rows()
+
+
+func _update_total_time() -> void:
+	var total_time_seconds: float = 0.0
+	for level: int in range(1, GlobalState.LEVEL_COUNT + 1):
+		total_time_seconds += GlobalState.get_level_time_seconds(level)
+
+	total_time_label.text = "Total time: %s" % _format_time(total_time_seconds)
 
 func _populate_level_rows() -> void:
 	for child: Node in level_rows.get_children():
