@@ -5,3 +5,4 @@ addons/ziva_agent/
 .ziva/
 .vscode/
 .codex
+.DS_Store
