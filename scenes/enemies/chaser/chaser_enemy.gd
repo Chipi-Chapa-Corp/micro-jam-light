@@ -17,7 +17,10 @@ func _physics_process(delta: float) -> void:
 
 	if sees_player_now and is_instance_valid(player):
 		is_patrolling = false
-		var x_direction: int = sign(player.global_position.x - global_position.x)
+		var to_player_x := player.global_position.x - global_position.x
+		var x_direction: int = 0
+		if abs(to_player_x) > face_player_turn_threshold:
+			x_direction = int(sign(to_player_x))
 		var bounds := _get_waypoint_bounds()
 		if _hits_waypoint_boundary_while_chasing(x_direction, bounds):
 			velocity = Vector2.ZERO
@@ -25,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = x_direction * speed
 			velocity.y = 0.0
-			_play_idle_or_walk("walk")
+			_play_idle_or_walk("idle" if x_direction == 0 else "walk")
 	else:
 		is_patrolling = true
 		_play_idle_or_walk("walk")
