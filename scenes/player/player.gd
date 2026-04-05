@@ -8,6 +8,11 @@ const PUSH_FORCE = 100.0
 const STEP_INTERVAL = 0.2
 const LAND_STEP_DELAY = 0.15
 
+const MIN_X = -31.0
+const MAX_X = 1180.0
+const MIN_Y = -30.0
+const MAX_Y = 640.0
+
 @onready var sfx_step = $sfx_step
 @onready var sfx_fall_after_jump = $sfxFallAfterJump
 @onready var sfx_jump = $sfxJump
@@ -54,6 +59,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+	_check_out_of_bounds()
 	_check_enemy_collision()
 	
 	update_animation(direction)
@@ -77,6 +83,14 @@ func _physics_process(delta: float) -> void:
 		step_timer = 0.0
 	
 	was_on_floor = is_on_floor()
+
+func _check_out_of_bounds() -> void:
+	if is_exiting:
+		return
+
+	var p := global_position
+	if p.x < MIN_X or p.x > MAX_X or p.y < MIN_Y or p.y > MAX_Y:
+		take_damage()
 
 func spawn_appear_effect() -> void:
 	var effect = spawn_effect.instantiate()
