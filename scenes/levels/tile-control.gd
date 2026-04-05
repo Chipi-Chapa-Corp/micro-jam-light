@@ -15,6 +15,9 @@ const DEFAULT_PLATFORM_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/pla
 const DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH := "res://scenes/levels/materials/viewport_edge_glow.tres"
 const HOLD_DURATION_SECONDS := 3.0
 const GAME_OVER_SCENE_PATH := "res://ui/screens/game-over/scene.tscn"
+const BONUS_FINISH_SCENE_PATH := "res://scenes/bonus-finish/scene.tscn"
+const MAIN_CAMPAIGN_END_LEVEL := 5
+const BONUS_LEVEL_NUMBER := 6
 const FIRST_DEATH_HINT_TEXT := "You can hold Backspace for 3 seconds to skip the level or R to restart it"
 const HINT_SCENE := preload("res://ui/gui-elements/hint.tscn")
 
@@ -107,9 +110,15 @@ func _trigger_level_skip() -> void:
 	_is_level_transitioning = true
 	_restart_hold_seconds = 0.0
 	_skip_hold_seconds = 0.0
+	var completed_level: int = GlobalState.current_level
 	GlobalState.end_level(true)
+	if completed_level == BONUS_LEVEL_NUMBER:
+		get_tree().change_scene_to_file(BONUS_FINISH_SCENE_PATH)
+		return
+
 	var next_scene_path: String = GlobalState.get_current_level_scene()
-	if next_scene_path.is_empty():
+	var should_show_game_over: bool = completed_level == MAIN_CAMPAIGN_END_LEVEL
+	if should_show_game_over or next_scene_path.is_empty():
 		get_tree().change_scene_to_file(GAME_OVER_SCENE_PATH)
 	else:
 		GlobalState.start_level()

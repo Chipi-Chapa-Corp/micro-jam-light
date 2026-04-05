@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://e6xgwrtl10xa"]
+
+[ext_resource type="Script" uid="uid://d1oy0wi0l2l2l" path="res://ui/screens/main-menu/control_background.gd" id="1_7l1ds"]
+[ext_resource type="Script" path="res://scenes/bonus-finish/script.gd" id="2_icncp"]
+[ext_resource type="Texture2D" uid="uid://biu5eykdnhd6j" path="res://ui/gui-assets/images/backgrounds/1-red.png" id="2_fgy53"]
+[ext_resource type="Texture2D" uid="uid://byc87vq04od6r" path="res://ui/gui-assets/images/backgrounds/2-red.png" id="3_iwig2"]
+[ext_resource type="Texture2D" uid="uid://cupw8bspvwe3n" path="res://ui/gui-assets/images/backgrounds/3-red.png" id="4_bfcbn"]
+[ext_resource type="Theme" uid="uid://dq5he3f3qilxj" path="res://ui/gui-elements/theme.tres" id="5_oinih"]
+[ext_resource type="PackedScene" uid="uid://3wpy4xwwypa" path="res://ui/gui-elements/button.tscn" id="6_v2k14"]
+
+[node name="Bonus Finished" type="Control" unique_id=1621768380]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_icncp")
+
+[node name="ControlBackground" type="Control" parent="." unique_id=423006452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7l1ds")
+smooth_speed = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="ControlBackground" unique_id=292328503]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("2_fgy53")
+stretch_mode = 5
+
+[node name="CloudsBack" type="TextureRect" parent="ControlBackground" unique_id=1467541533]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("3_iwig2")
+
+[node name="CloudsFront" type="TextureRect" parent="ControlBackground" unique_id=140346005]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_bfcbn")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1764356258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 60.0
+offset_right = -80.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=204021240]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1098174884]
+layout_mode = 2
+theme = ExtResource("5_oinih")
+theme_type_variation = &"HeaderLarge"
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+theme_override_constants/outline_size = 20
+text = "Bonus Level Completed!"
+
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1067773627]
+layout_mode = 2
+theme = ExtResource("5_oinih")
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+theme_override_constants/outline_size = 20
+text = "Total time:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1319979792]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 64
+
+[node name="MainMenuButton" parent="MarginContainer/HBoxContainer" unique_id=1899383793 instance=ExtResource("6_v2k14")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9878276, 0.8921059, 0.9279237, 1)
+theme_override_colors/font_disabled_color = Color(0.36862746, 0.17254902, 0.2627451, 1)
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+text = "To Main Menu"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]

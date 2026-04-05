@@ -4,6 +4,8 @@ extends Control
 const REPLAY_BUTTON_SCENE: PackedScene = preload("res://ui/gui-elements/replay-button.tscn")
 const TOOLTIP_BG_COLOR: Color = Color(0.5137255, 0.10980392, 0.3254902, 0.8)
 const MAIN_MENU_SCENE: PackedScene = preload("res://ui/screens/main-menu/scene.tscn")
+const MAIN_CAMPAIGN_END_LEVEL: int = 5
+const BONUS_LEVEL_NUMBER: int = 6
 
 @onready var level_rows: VBoxContainer = $MarginContainer/VBoxContainer/LevelRows
 @onready var total_time_label: Label = $MarginContainer/VBoxContainer/Subtitle
@@ -25,7 +27,7 @@ func _populate_level_rows() -> void:
 	for child: Node in level_rows.get_children():
 		child.queue_free()
 
-	for level: int in range(1, GlobalState.LEVEL_COUNT + 1):
+	for level: int in range(1, MAIN_CAMPAIGN_END_LEVEL + 1):
 		level_rows.add_child(_build_level_row(level))
 
 
@@ -75,15 +77,21 @@ func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
 
 
-func _on_quit_pressed() -> void:
-	AudioManager.play_ui_back()
-	get_tree().quit()
+func _on_bonus_level_pressed() -> void:
+	AudioManager.play_ui_button_click()
+	var bonus_level_scene_path: String = str(GlobalState.LEVEL_SCENES.get(BONUS_LEVEL_NUMBER, ""))
+	if bonus_level_scene_path.is_empty():
+		push_warning("game-over/script.gd: Missing level scene for bonus level %d." % BONUS_LEVEL_NUMBER)
+		return
+
+	GlobalState.restart_run_from_level(BONUS_LEVEL_NUMBER)
+	get_tree().change_scene_to_file(bonus_level_scene_path)
 
 
 func _format_time(time_seconds: float) -> String:
 	var total_centiseconds: int = int(round(time_seconds * 100.0))
-	var minutes: int = total_centiseconds / 6000
-	var seconds: int = (total_centiseconds / 100) % 60
+	var minutes: int = floori(total_centiseconds / 6000.0)
+	var seconds: int = floori(total_centiseconds / 100.0) % 60
 	var centiseconds: int = total_centiseconds % 100
 	return "%02d:%02d.%02d" % [minutes, seconds, centiseconds]
 
