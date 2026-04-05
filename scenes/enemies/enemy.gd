@@ -3,8 +3,8 @@ class_name Enemy
 
 @export_group("Movement")
 @export var speed: float = 100.0
-@export_range(0, 3, 0.5) var waypoint_block_count_left: float = 0
-@export_range(0, 3, 0.5) var waypoint_block_count_right: float = 0
+@export_range(0, 6, 0.5) var waypoint_block_count_left: float = 0
+@export_range(0, 6, 0.5) var waypoint_block_count_right: float = 0
 @export var waypoint_block_size: float = 32.0 # 1 tile size
 @export var default_face_right: bool = true
 

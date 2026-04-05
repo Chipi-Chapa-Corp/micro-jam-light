@@ -6,7 +6,9 @@
 [ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="5_wb0vq"]
 [ext_resource type="AudioStream" uid="uid://d20b0bt80f22g" path="res://sounds/whoosh.wav" id="6_ah4rv"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="7_522sc"]
+[ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="8_7eb4w"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="8_a82vw"]
+[ext_resource type="PackedScene" uid="uid://cw6dw8th87avs" path="res://scenes/enemies/blind/blind_enemy.tscn" id="9_hadiw"]
 
 [node name="Level 2" type="Node2D" unique_id=1604683869]
 
@@ -47,7 +49,52 @@ stream = ExtResource("6_ah4rv")
 volume_db = -10.0
 
 [node name="Player" parent="." unique_id=217580263 instance=ExtResource("7_522sc")]
-position = Vector2(14, 542)
+position = Vector2(560, 629)
 
 [node name="Portal" parent="." unique_id=1733251554 instance=ExtResource("8_a82vw")]
 position = Vector2(15, 168)
+
+[node name="Stars" type="Node" parent="." unique_id=966067278]
+
+[node name="Star" parent="Stars" unique_id=903536304 instance=ExtResource("8_7eb4w")]
+position = Vector2(16, 560)
+
+[node name="Star2" parent="Stars" unique_id=751080743 instance=ExtResource("8_7eb4w")]
+position = Vector2(1040, 50)
+
+[node name="Star3" parent="Stars" unique_id=78493821 instance=ExtResource("8_7eb4w")]
+position = Vector2(1041, 624)
+
+[node name="Enemies" type="Node" parent="." unique_id=626277394]
+
+[node name="BlindEnemy" parent="Enemies" unique_id=1773173021 instance=ExtResource("9_hadiw")]
+position = Vector2(214, 617)
+waypoint_block_count_left = 5.5
+
+[node name="BlindEnemy2" parent="Enemies" unique_id=1457273228 instance=ExtResource("9_hadiw")]
+position = Vector2(336, 617)
+waypoint_block_count_left = 2.0
+waypoint_block_count_right = 2.0
+
+[node name="BlindEnemy3" parent="Enemies" unique_id=1127944930 instance=ExtResource("9_hadiw")]
+position = Vector2(560, 457)
+waypoint_block_count_left = 2.5
+waypoint_block_count_right = 2.5
+
+[node name="BlindEnemy4" parent="Enemies" unique_id=1029344882 instance=ExtResource("9_hadiw")]
+position = Vector2(716, 617)
+waypoint_block_count_right = 4.5
+
+[node name="BlindEnemy5" parent="Enemies" unique_id=567467665 instance=ExtResource("9_hadiw")]
+position = Vector2(1009, 617)
+waypoint_block_count_left = 3.0
+waypoint_block_count_right = 1.0
+
+[node name="BlindEnemy6" parent="Enemies" unique_id=2032202785 instance=ExtResource("9_hadiw")]
+position = Vector2(1098, 585)
+waypoint_block_count_right = 1.5
+
+[node name="BlindEnemy7" parent="Enemies" unique_id=1629289168 instance=ExtResource("9_hadiw")]
+position = Vector2(752, 265)
+waypoint_block_count_left = 2.5
+waypoint_block_count_right = 1.5
