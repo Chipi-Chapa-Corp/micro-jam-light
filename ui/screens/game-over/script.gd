@@ -2,21 +2,14 @@ class_name GameOverScreen
 extends Control
 
 const REPLAY_BUTTON_SCENE: PackedScene = preload("res://ui/gui-elements/replay-button.tscn")
-const LEVEL_SCENES: Dictionary = {
-	1: "res://scenes/levels/tutorial/tutorial-level.tscn",
-	2: "res://scenes/levels/level1.tscn",
-	3: "",
-	4: ""
-}
 const TOOLTIP_BG_COLOR: Color = Color(0.5137255, 0.10980392, 0.3254902, 0.8)
+const MAIN_MENU_SCENE: PackedScene = preload("res://ui/screens/main-menu/scene.tscn")
 
 @onready var level_rows: VBoxContainer = $MarginContainer/VBoxContainer/LevelRows
 @onready var replay_button_tooltip_theme: Theme = _create_replay_button_tooltip_theme()
 
-
 func _ready() -> void:
 	_populate_level_rows()
-
 
 func _populate_level_rows() -> void:
 	for child: Node in level_rows.get_children():
@@ -49,7 +42,7 @@ func _build_level_row(level: int) -> HBoxContainer:
 	restart_button.expand_icon = true
 	restart_button.theme = replay_button_tooltip_theme
 	restart_button.tooltip_text = "Replay Level %d" % level
-	var scene_path: String = str(LEVEL_SCENES.get(level, ""))
+	var scene_path: String = str(GlobalState.LEVEL_SCENES.get(level, ""))
 
 	if scene_path.is_empty():
 		restart_button.disabled = true
@@ -64,6 +57,16 @@ func _on_restart_level_pressed(level: int, scene_path: String) -> void:
 	GlobalState.current_level = level
 	GlobalState.start_level(level)
 	get_tree().change_scene_to_file(scene_path)
+
+
+func _on_main_menu_pressed() -> void:
+	AudioManager.play_ui_button_click()
+	get_tree().change_scene_to_packed(MAIN_MENU_SCENE)
+
+
+func _on_quit_pressed() -> void:
+	AudioManager.play_ui_back()
+	get_tree().quit()
 
 
 func _format_time(time_seconds: float) -> String:

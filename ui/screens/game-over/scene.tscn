@@ -128,16 +128,19 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 64
 
-[node name="Button" parent="MarginContainer/HBoxContainer" unique_id=1899383793 instance=ExtResource("7_u6xtm")]
+[node name="MainMenuButton" parent="MarginContainer/HBoxContainer" unique_id=1899383793 instance=ExtResource("7_u6xtm")]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9878276, 0.8921059, 0.9279237, 1)
 theme_override_colors/font_disabled_color = Color(0.36862746, 0.17254902, 0.2627451, 1)
 theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
 text = "To Main Menu"
 
-[node name="Button2" parent="MarginContainer/HBoxContainer" unique_id=844761379 instance=ExtResource("7_u6xtm")]
+[node name="QuitButton" parent="MarginContainer/HBoxContainer" unique_id=844761379 instance=ExtResource("7_u6xtm")]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.9882353, 0.8901961, 0.92941177, 1)
 theme_override_colors/font_disabled_color = Color(0.37027282, 0.17416154, 0.26336637, 1)
 theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
 text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/MainMenuButton" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
