@@ -1,12 +1,19 @@
 extends CharacterBody2D
 class_name Enemy
 
+@export_group("Movement")
 @export var speed: float = 100.0
-@export var waypoints: Array[Vector2] = []  # Set in inspector or generate
+@export_range(0, 32, 1) var waypoint_block_count_left: int = 0
+@export_range(0, 32, 1) var waypoint_block_count_right: int = 0
+@export var waypoint_block_size: float = 48.0 # 1.5x tile size
+
+@export_group("Gameplay")
 @export var player: Node2D  # Reference to the player
 @export var collide_with_walls: bool = false
 @export_range(1, 32, 1) var wall_collision_layer: int = 1
-@export var show_vision_debug: bool = true
+
+@export_group("Vision")
+@export var show_vision_debug: bool = false
 @export var vision_range: float = 300.0
 @export var overhead_vision_horizontal_tolerance: float = 64.0
 @export var overhead_vision_vertical_tolerance: float = 120.0
@@ -19,14 +26,12 @@ var current_waypoint_index: int = 0
 var is_patrolling: bool = true
 var sees_player_now: bool = false
 var facing_direction_x: int = 1
+var waypoints: Array[Vector2] = [] 
 
 const DEFAULT_WAYPOINT_DISTANCE: int = 30
 
 func _ready() -> void:
-	if waypoints.is_empty():
-		push_warning("Waypoints not set for enemy: %s" % name)
-		waypoints.append(global_position - Vector2(DEFAULT_WAYPOINT_DISTANCE, 0)) 
-		waypoints.append(global_position + Vector2(DEFAULT_WAYPOINT_DISTANCE, 0)) 
+	_initialize_waypoints()
 
 	set_collision_mask_value(wall_collision_layer, collide_with_walls)
 
@@ -35,6 +40,26 @@ func _ready() -> void:
 
 	if anim:
 		anim.play("walk")
+
+func _initialize_waypoints() -> void:
+	if waypoint_block_count_left > 0 or waypoint_block_count_right > 0:
+		_append_block_boundary_waypoints()
+
+	if waypoints.is_empty():
+		push_warning("Waypoints not set for enemy: %s" % name)
+		waypoints.append(global_position - Vector2(DEFAULT_WAYPOINT_DISTANCE, 0))
+		waypoints.append(global_position + Vector2(DEFAULT_WAYPOINT_DISTANCE, 0))
+
+func _append_block_boundary_waypoints() -> void:
+	if waypoint_block_count_left > 0:
+		var left_waypoint := global_position - Vector2(waypoint_block_count_left * waypoint_block_size, 0)
+		if not waypoints.has(left_waypoint):
+			waypoints.append(left_waypoint)
+
+	if waypoint_block_count_right > 0:
+		var right_waypoint := global_position + Vector2(waypoint_block_count_right * waypoint_block_size, 0)
+		if not waypoints.has(right_waypoint):
+			waypoints.append(right_waypoint)
 
 func _physics_process(_delta: float) -> void:
 	_update_facing_for_overhead_player()
