@@ -35,10 +35,12 @@ func resume_game() -> void:
 
 
 func _on_resume_button_pressed() -> void:
+	AudioManager.play_ui_button_click()
 	resume_game()
 
 
 func _on_main_menu_button_pressed() -> void:
+	AudioManager.play_ui_button_click()
 	get_tree().paused = false
 	visible = false
 	_is_open = false

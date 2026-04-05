@@ -2,7 +2,7 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-uid="uid://dh7ccfq7o4y04"
+uid="uid://b13tkpws4nxja"
 path="res://.godot/imported/Equatorial Complex.mp3-44d79023074a6d081c9ab1fb358091d2.mp3str"
 
 [deps]
@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Equatorial Complex.mp3-44d79023074a6d081c9ab1
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
 bpm=0
 beat_count=0
