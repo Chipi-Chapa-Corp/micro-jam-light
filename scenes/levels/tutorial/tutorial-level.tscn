@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c5wxnnchoumrv"]
 
 [ext_resource type="Script" uid="uid://vq00ot2uic2w" path="res://scenes/levels/tile-control.gd" id="1_5ehse"]
+[ext_resource type="PackedScene" uid="uid://cohm4wa3aq7xm" path="res://ui/gui-elements/parallax.tscn" id="1_me5g0"]
 [ext_resource type="TileSet" uid="uid://dodfa3fcd3xum" path="res://scenes/levels/assets/tileset.tres" id="2_5jvu3"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="2_gyius"]
 [ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="3_irrgu"]
@@ -9,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="7_n0gcm"]
 
 [node name="Tutorial Level" type="Node2D" unique_id=1604683869]
+
+[node name="Parallax" parent="." unique_id=1221868175 node_paths=PackedStringArray("player") instance=ExtResource("1_me5g0")]
+player = NodePath("../Player")
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("1_5ehse")
