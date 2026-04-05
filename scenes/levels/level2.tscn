@@ -17,7 +17,7 @@
 player = NodePath("../Player")
 
 [node name="Hint" parent="." unique_id=529739498 instance=ExtResource("10_8pv4m")]
-hint_text = "Archers don't like anybody. Avoid their arrows at any cost"
+hint_text = "Cannons don't like anybody. Avoid their bullets at any cost"
 auto_show_static_hint = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
