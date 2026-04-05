@@ -65,24 +65,24 @@ position = Vector2(527, 207)
 [node name="Star3" parent="Stars" unique_id=78335346 instance=ExtResource("8_4vryo")]
 position = Vector2(366, 431)
 
-[node name="ChaserEnemy" parent="Stars" unique_id=1968472386 instance=ExtResource("9_g1ckg")]
+[node name="Enemies" type="Node" parent="." unique_id=380614517]
+
+[node name="ChaserEnemy" parent="Enemies" unique_id=1968472386 instance=ExtResource("9_g1ckg")]
 position = Vector2(448, 488)
 waypoint_block_count_left = 2.0
 waypoint_block_count_right = 2.0
 
-[node name="ChaserEnemy2" parent="Stars" unique_id=505950475 instance=ExtResource("9_g1ckg")]
+[node name="ChaserEnemy2" parent="Enemies" unique_id=505950475 instance=ExtResource("9_g1ckg")]
 position = Vector2(432, 200)
 waypoint_block_count_left = 1.5
 waypoint_block_count_right = 3.5
 
-[node name="ChaserEnemy3" parent="Stars" unique_id=1887757402 instance=ExtResource("9_g1ckg")]
+[node name="ChaserEnemy3" parent="Enemies" unique_id=1887757402 instance=ExtResource("9_g1ckg")]
 position = Vector2(656, 40)
 waypoint_block_count_left = 1.5
 waypoint_block_count_right = 2.5
 
-[node name="ChaserEnemy4" parent="Stars" unique_id=1663080843 instance=ExtResource("9_g1ckg")]
+[node name="ChaserEnemy4" parent="Enemies" unique_id=1663080843 instance=ExtResource("9_g1ckg")]
 position = Vector2(848, 40)
 waypoint_block_count_left = 2.5
 waypoint_block_count_right = 1.5
-
-[node name="Enemies" type="Node" parent="." unique_id=380614517]
