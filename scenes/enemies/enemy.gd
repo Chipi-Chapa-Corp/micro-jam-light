@@ -3,9 +3,9 @@ class_name Enemy
 
 @export_group("Movement")
 @export var speed: float = 100.0
-@export_range(1, 32, 1) var waypoint_block_count_left: int = 0
-@export_range(1, 32, 1) var waypoint_block_count_right: int = 0
-@export var waypoint_block_size: float = 48.0 # 1.5x tile size
+@export_range(0, 3, 0.5) var waypoint_block_count_left: float = 0
+@export_range(0, 3, 0.5) var waypoint_block_count_right: float = 0
+@export var waypoint_block_size: float = 32.0 # 1 tile size
 @export var default_face_right: bool = true
 
 @export_group("Gameplay")
@@ -15,15 +15,15 @@ class_name Enemy
 
 @export_group("Vision")
 @export var show_vision_debug: bool = false
-@export var vision_range: float = 300.0
+@export var vision_range: float = 352.0
 @export var overhead_vision_horizontal_tolerance: float = 64.0
 @export var overhead_vision_vertical_tolerance: float = 120.0
 @export var face_player_turn_threshold: float = 6.0
-@export var stationary_can_turn_around: bool = true
 
 @onready var ray_cast: RayCast2D = $RayCast2D  # For vision
 @onready var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
+var stationary_can_turn_around: bool = true
 var current_waypoint_index: int = 0
 var is_patrolling: bool = true
 var sees_player_now: bool = false
@@ -56,12 +56,12 @@ func _initialize_waypoints() -> void:
 	_append_block_boundary_waypoints()
 
 func _append_block_boundary_waypoints() -> void:
-	if waypoint_block_count_left > 0:
+	if waypoint_block_count_left >= 0:
 		var left_waypoint := global_position - Vector2(waypoint_block_count_left * waypoint_block_size, 0)
 		if not waypoints.has(left_waypoint):
 			waypoints.append(left_waypoint)
 
-	if waypoint_block_count_right > 0:
+	if waypoint_block_count_right >= 0:
 		var right_waypoint := global_position + Vector2(waypoint_block_count_right * waypoint_block_size, 0)
 		if not waypoints.has(right_waypoint):
 			waypoints.append(right_waypoint)

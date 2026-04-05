@@ -4,7 +4,8 @@ extends "res://scenes/enemies/enemy.gd"
 @export var shoot_interval: float = 1.0
 @export_group("Stationary")
 @export var is_stationary_mode: bool = false
-@export var facing_right_in_stationary: bool = false
+@export var can_turn_around_in_stationary: bool = true
+@export var facing_right_no_turn: bool = false
 
 var shoot_timer: float = 0.0
 var bullet_offset_x: float = 10.0 
@@ -15,10 +16,10 @@ var is_shoot_animation_playing: bool = false
 func _ready() -> void:
 	super._ready()
 	is_stationary = is_stationary_mode
-	stationary_can_turn_around = false
+	stationary_can_turn_around = can_turn_around_in_stationary
 
 	if is_stationary_mode:
-		facing_direction_x = 1 if facing_right_in_stationary else -1
+		facing_direction_x = 1 if facing_right_no_turn else -1
 		_apply_facing_visual()
 	else:
 		_ensure_non_stationary_waypoints()
@@ -33,8 +34,6 @@ func _physics_process(delta: float) -> void:
 
 	if is_stationary_mode:
 		velocity = Vector2.ZERO
-		facing_direction_x = 1 if facing_right_in_stationary else -1
-		_apply_facing_visual()
 		if sees_player_now and is_instance_valid(player) and _is_player_in_front():
 			_start_attack(delta)
 		else:
