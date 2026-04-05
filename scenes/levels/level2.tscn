@@ -6,7 +6,9 @@
 [ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="5_8i1lk"]
 [ext_resource type="AudioStream" uid="uid://d20b0bt80f22g" path="res://sounds/whoosh.wav" id="6_hgky1"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="7_b4tpv"]
+[ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="8_b0vvs"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="8_hkuam"]
+[ext_resource type="PackedScene" uid="uid://bawmxtftu7bnb" path="res://scenes/enemies/shooter/shooter_enemy.tscn" id="9_oyk6k"]
 
 [node name="Level 2" type="Node2D" unique_id=1604683869]
 
@@ -47,7 +49,43 @@ stream = ExtResource("6_hgky1")
 volume_db = -10.0
 
 [node name="Player" parent="." unique_id=217580263 instance=ExtResource("7_b4tpv")]
-position = Vector2(15, 574)
+position = Vector2(15, 597)
 
 [node name="Portal" parent="." unique_id=1733251554 instance=ExtResource("8_hkuam")]
 position = Vector2(1099, 40)
+
+[node name="Stars" type="Node" parent="." unique_id=1845144762]
+
+[node name="Star" parent="Stars" unique_id=1972640935 instance=ExtResource("8_b0vvs")]
+position = Vector2(143, 336)
+
+[node name="Star2" parent="Stars" unique_id=840980986 instance=ExtResource("8_b0vvs")]
+position = Vector2(304, 15)
+
+[node name="Star3" parent="Stars" unique_id=257766185 instance=ExtResource("8_b0vvs")]
+position = Vector2(1105, 400)
+
+[node name="Enemies" type="Node" parent="." unique_id=663848092]
+
+[node name="ShooterEnemy" parent="Enemies" unique_id=678297121 instance=ExtResource("9_oyk6k")]
+position = Vector2(49, 137)
+is_stationary_mode = true
+can_turn_around_in_stationary = false
+facing_right_no_turn = true
+
+[node name="ShooterEnemy2" parent="Enemies" unique_id=1881862282 instance=ExtResource("9_oyk6k")]
+position = Vector2(50, 328)
+is_stationary_mode = true
+can_turn_around_in_stationary = false
+facing_right_no_turn = true
+
+[node name="ShooterEnemy3" parent="Enemies" unique_id=2024057250 instance=ExtResource("9_oyk6k")]
+position = Vector2(945, 392)
+is_stationary_mode = true
+can_turn_around_in_stationary = false
+facing_right_no_turn = true
+
+[node name="ShooterEnemy4" parent="Enemies" unique_id=773392174 instance=ExtResource("9_oyk6k")]
+position = Vector2(880, 40)
+waypoint_block_count_left = 5.5
+waypoint_block_count_right = 1.5
