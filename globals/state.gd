@@ -8,14 +8,15 @@ const LEVEL_SCENES: Dictionary = {
 	3: "res://scenes/levels/level3.tscn",
 	4: "res://scenes/levels/level1.tscn",
 	5: "res://scenes/levels/level4.tscn",
+	6: "res://scenes/levels/level5.tscn",
 }
 const _NOT_STARTED_TICK: int = -1
 
 var current_level: int = 1
-var _stars_by_level: Array[int] = [0, 0, 0, 0, 0]
-var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0]
-var _skipped_by_level: Array[bool] = [false, false, false, false, false]
-var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+var _stars_by_level: Array[int] = [0, 0, 0, 0, 0, 0]
+var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+var _skipped_by_level: Array[bool] = [false, false, false, false, false, false]
+var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
 
 func get_current_level_scene() -> String:
 	return LEVEL_SCENES.get(current_level, "")
