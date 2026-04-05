@@ -1,7 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://dq5he3f3qilxj"]
 
-[ext_resource type="FontFile" uid="uid://btnvba2nxu2vj" path="res://ui/gui-assets/fonts/Micro5-Regular.ttf" id="1_hdlwd"]
-[ext_resource type="FontFile" uid="uid://f63d185udmxp" path="res://ui/gui-assets/fonts/Geo-Regular.ttf" id="5_2k13m"]
+[ext_resource type="FontFile" uid="uid://btnvba2nxu2vj" path="res://ui/gui-assets/fonts/Micro5-Regular.ttf" id="1_btt64"]
+[ext_resource type="FontFile" uid="uid://f63d185udmxp" path="res://ui/gui-assets/fonts/Geo-Regular.ttf" id="2_qtgv5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6j7ci"]
 content_margin_left = 4.0
@@ -22,22 +22,22 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
-default_font = ExtResource("5_2k13m")
+default_font = ExtResource("2_qtgv5")
 default_font_size = 32
 FlatButton/colors/font_color = Color(1, 1, 1, 1)
 FlatButton/colors/font_disabled_color = Color(0.2999676, 0.3554047, 0.7157464, 1)
-FlatButton/colors/font_hover_color = Color(0.8394798, 0.8929908, 0.9991606, 1)
+FlatButton/colors/font_hover_color = Color(0.8392157, 0.89411765, 1, 1)
 FlatButton/colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
 FlatButton/constants/outline_size = 20
 FlatButton/font_sizes/font_size = 64
-FlatButton/fonts/font = ExtResource("1_hdlwd")
+FlatButton/fonts/font = ExtResource("1_btt64")
 FlatButton/styles/disabled = SubResource("StyleBoxEmpty_6j7ci")
 FlatButton/styles/hover = SubResource("StyleBoxEmpty_6j7ci")
 FlatButton/styles/normal = SubResource("StyleBoxEmpty_6j7ci")
 FlatButton/styles/pressed = SubResource("StyleBoxFlat_pbad3")
 HeaderLarge/font_sizes/font_size = 96
-HeaderLarge/fonts/font = ExtResource("1_hdlwd")
+HeaderLarge/fonts/font = ExtResource("1_btt64")
 HeaderSmall/font_sizes/font_size = 35
-HeaderSmall/fonts/font = ExtResource("1_hdlwd")
+HeaderSmall/fonts/font = ExtResource("1_btt64")
 Label/font_sizes/font_size = 64
-Label/fonts/font = ExtResource("1_hdlwd")
+Label/fonts/font = ExtResource("1_btt64")

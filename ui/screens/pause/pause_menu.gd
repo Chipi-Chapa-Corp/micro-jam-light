@@ -1,7 +1,7 @@
 extends CanvasLayer
 const MAIN_MENU_SCENE: PackedScene = preload("res://ui/screens/main-menu/scene.tscn")
 
-@onready var resume_button: Button = %ResumeButton
+@onready var resume_button: Button = get_node_or_null("CenterContainer/Panel/MarginContainer/MenuVBox/Button") as Button
 
 var _is_open: bool = false
 
@@ -24,7 +24,8 @@ func pause_game() -> void:
 	_is_open = true
 	visible = true
 	get_tree().paused = true
-	resume_button.grab_focus()
+	if is_instance_valid(resume_button):
+		resume_button.grab_focus()
 
 
 func resume_game() -> void:
