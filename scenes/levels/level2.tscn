@@ -9,11 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="8_b0vvs"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="8_hkuam"]
 [ext_resource type="PackedScene" uid="uid://bawmxtftu7bnb" path="res://scenes/enemies/shooter/shooter_enemy.tscn" id="9_oyk6k"]
+[ext_resource type="PackedScene" uid="uid://c5ltu4ui81awc" path="res://ui/gui-elements/hint.tscn" id="10_8pv4m"]
 
-[node name="Level 2" type="Node2D" unique_id=1604683869]
+[node name="Level 3" type="Node2D" unique_id=1604683869]
 
 [node name="Parallax" parent="." unique_id=1221868175 node_paths=PackedStringArray("player") instance=ExtResource("1_k0mew")]
 player = NodePath("../Player")
+
+[node name="Hint" parent="." unique_id=529739498 instance=ExtResource("10_8pv4m")]
+z_index = 100
+offset_left = 569.0
+offset_top = 548.0
+offset_right = 569.0
+offset_bottom = 548.0
+hint_text = "Archers don't like anybody. Avoid their arrows at any cost"
+auto_show_static_hint = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("2_b0vvs")

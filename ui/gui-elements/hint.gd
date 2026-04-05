@@ -2,6 +2,7 @@ extends Control
 
 @export_multiline var hint_text := "Put your hint text here"
 @export var dynamic_tutorial_mode := false
+@export var auto_show_static_hint := false
 
 @export var hover_icon: Control
 @export var bubble: Control
@@ -29,6 +30,12 @@ func _ready() -> void:
 		set_process(true)
 		hover_icon.visible = true
 		_set_tutorial_step(0)
+		_show_bubble_immediately()
+		start_pulse()
+		return
+
+	if auto_show_static_hint:
+		set_process(false)
 		_show_bubble_immediately()
 		start_pulse()
 		return
