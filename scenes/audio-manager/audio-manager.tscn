@@ -8,7 +8,7 @@ script = ExtResource("1_a7g66")
 
 [node name="sfx_ui_button_click" type="AudioStreamPlayer" parent="." unique_id=94790825]
 stream = ExtResource("2_jaiqx")
-volume_db = -3.0
+volume_db = -8.0
 
 [node name="sfx_ui_button_hover" type="AudioStreamPlayer" parent="." unique_id=1726915568]
 
