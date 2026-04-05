@@ -267,7 +267,6 @@ func _check_enemy_collision() -> void:
 			return
 
 func take_damage() -> void:
-	return
 	if is_exiting:
 		return
 
