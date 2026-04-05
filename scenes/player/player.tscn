@@ -266,6 +266,8 @@ animations = [{
 size = Vector2(17, 19)
 
 [node name="Player" type="CharacterBody2D" unique_id=217580263 groups=["player"]]
+collision_mask = 3
+
 script = ExtResource("1_e4tch")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1884640236]
