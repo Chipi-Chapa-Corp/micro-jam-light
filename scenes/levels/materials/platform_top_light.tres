@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://scenes/levels/materials/shaders/platform_top_light.gdshader" id="1_6pr1b"]
+
+[resource]
+shader = ExtResource("1_6pr1b")
+shader_parameter/top_tint = Color(1, 1, 1, 1)
+shader_parameter/top_band_px = 20.0
+shader_parameter/tint_strength = 0.5
+shader_parameter/tile_size = 32.0
+shader_parameter/grid_origin_y = 0.0
+shader_parameter/grid_origin_x = 0.0
+shader_parameter/light_position = 1
