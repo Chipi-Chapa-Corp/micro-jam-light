@@ -3,6 +3,7 @@ extends CanvasLayer
 @export_multiline var hint_text := "Put your hint text here"
 @export var dynamic_tutorial_mode := false
 @export var auto_show_static_hint := false
+@export var show_only_once_per_level := true
 
 const TUTORIAL_HINTS := [
 	"Use A and D to move",
@@ -26,11 +27,17 @@ func _ready() -> void:
 	visible = false
 
 	if dynamic_tutorial_mode:
+		if _should_skip_auto_hint():
+			return
+		_mark_auto_hint_seen()
 		set_process(true)
 		_show_tutorial_step(0)
 		return
 
 	if auto_show_static_hint:
+		if _should_skip_auto_hint():
+			return
+		_mark_auto_hint_seen()
 		set_process(false)
 		_show_static_hint()
 		return
@@ -134,3 +141,17 @@ func _is_shadow_control_pressed() -> bool:
 		or Input.is_action_just_pressed("shadow_up")
 		or Input.is_action_just_pressed("shadow_down")
 	)
+
+
+func _should_skip_auto_hint() -> bool:
+	if not show_only_once_per_level:
+		return false
+
+	return GlobalState.has_seen_hint()
+
+
+func _mark_auto_hint_seen() -> void:
+	if not show_only_once_per_level:
+		return
+
+	GlobalState.mark_hint_seen()

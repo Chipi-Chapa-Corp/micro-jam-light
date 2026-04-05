@@ -282,5 +282,6 @@ func take_damage() -> void:
 	sfx_death.play()
 	
 	await effect.finished
+	GlobalState.request_first_death_hint()
 	GlobalState.reset_current_level()
 	get_tree().reload_current_scene()

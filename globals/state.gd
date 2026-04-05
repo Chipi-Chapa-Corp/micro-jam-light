@@ -17,6 +17,9 @@ var _stars_by_level: Array[int] = [0, 0, 0, 0, 0, 0]
 var _time_by_level_seconds: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 var _skipped_by_level: Array[bool] = [false, false, false, false, false, false]
 var _start_tick_by_level: Array[int] = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+var _seen_hints_by_level: Dictionary = {}
+var _pending_first_death_hint: bool = false
+var _has_shown_first_death_hint: bool = false
 
 func get_current_level_scene() -> String:
 	return LEVEL_SCENES.get(current_level, "")
@@ -123,12 +126,56 @@ func get_total_stars() -> int:
 	return total
 
 
+func has_seen_hint(level: int = -1) -> bool:
+	if level == -1:
+		level = current_level
+
+	if not _is_valid_level(level):
+		push_warning("has_seen_hint: level must be between 1 and %d" % LEVEL_COUNT)
+		return false
+
+	return bool(_seen_hints_by_level.get(level, false))
+
+
+func mark_hint_seen(level: int = -1) -> void:
+	if level == -1:
+		level = current_level
+
+	if not _is_valid_level(level):
+		push_warning("mark_hint_seen: level must be between 1 and %d" % LEVEL_COUNT)
+		return
+
+	_seen_hints_by_level[level] = true
+
+
+func request_first_death_hint() -> void:
+	if _has_shown_first_death_hint:
+		return
+
+	_pending_first_death_hint = true
+
+
+func has_pending_first_death_hint() -> bool:
+	return _pending_first_death_hint and not _has_shown_first_death_hint
+
+
+func mark_first_death_hint_shown() -> void:
+	if not _pending_first_death_hint:
+		return
+
+	_pending_first_death_hint = false
+	_has_shown_first_death_hint = true
+
+
 func reset_progress() -> void:
 	current_level = 1
 	_stars_by_level = [0, 0, 0, 0, 0]
 	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0, 0.0]
 	_skipped_by_level = [false, false, false, false, false]
 	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+	_seen_hints_by_level.clear()
+	_pending_first_death_hint = false
+	_has_shown_first_death_hint = false
 
 
 func start_new_run() -> void:

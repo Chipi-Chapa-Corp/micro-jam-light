@@ -15,6 +15,8 @@ const DEFAULT_PLATFORM_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/pla
 const DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH := "res://scenes/levels/materials/viewport_edge_glow.tres"
 const HOLD_DURATION_SECONDS := 3.0
 const GAME_OVER_SCENE_PATH := "res://ui/screens/game-over/scene.tscn"
+const FIRST_DEATH_HINT_TEXT := "Hold R to restart current level or Backspace to skip level (3s)"
+const HINT_SCENE := preload("res://ui/gui-elements/hint.tscn")
 
 var _side_layers: Array[TileMapLayer] = []
 var active_side_index := 0
@@ -52,6 +54,7 @@ func _ready() -> void:
 	active_side_index = 0
 	_apply_layer_state(true)
 	set_process(true)
+	_show_first_death_hint_if_needed()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -111,6 +114,34 @@ func _trigger_level_skip() -> void:
 	else:
 		GlobalState.start_level()
 		get_tree().change_scene_to_file(next_scene_path)
+
+
+func _show_first_death_hint_if_needed() -> void:
+	if not GlobalState.has_pending_first_death_hint():
+		return
+
+	call_deferred("_spawn_first_death_hint")
+
+
+func _spawn_first_death_hint() -> void:
+	if not is_inside_tree():
+		return
+	if not GlobalState.has_pending_first_death_hint():
+		return
+
+	var hint = HINT_SCENE.instantiate()
+	hint.hint_text = FIRST_DEATH_HINT_TEXT
+	hint.auto_show_static_hint = true
+	hint.show_only_once_per_level = false
+
+	var level_root := get_parent()
+	if level_root == null:
+		add_child.call_deferred(hint)
+		GlobalState.mark_first_death_hint_shown()
+		return
+
+	level_root.add_child.call_deferred(hint)
+	GlobalState.mark_first_death_hint_shown()
 
 
 func _set_active_side(index: int) -> void:
