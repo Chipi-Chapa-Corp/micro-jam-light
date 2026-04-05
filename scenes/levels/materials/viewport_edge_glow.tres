@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[ext_resource type="Shader" path="res://scenes/levels/materials/shaders/viewport_edge_glow.gdshader" id="1_dvwv2"]
+
+[resource]
+shader = ExtResource("1_dvwv2")
+shader_parameter/glow_color = Color(1, 0.9, 0.5, 0.35)
+shader_parameter/glow_intensity = 1.0
+shader_parameter/edge_spread_px = 72.0
+shader_parameter/edge_softness_px = 72.0
+shader_parameter/light_position = 0

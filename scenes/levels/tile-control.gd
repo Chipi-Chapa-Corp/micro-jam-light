@@ -9,14 +9,17 @@ extends Node2D
 @export var sfx_switch: AudioStreamPlayer
 @export var transition_duration: float = 0.2
 @export var platform_light_material: Material
+@export var viewport_glow_material: Material
 
 const DEFAULT_PLATFORM_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/platform_top_light.tres"
+const DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH := "res://scenes/levels/materials/viewport_edge_glow.tres"
 
 var _side_layers: Array[TileMapLayer] = []
 var active_side_index := 0
 var previous_side_index := -1
 var _current_tween: Tween
 var _layer_shadow_materials: Array = []
+var _viewport_glow_shader_material: ShaderMaterial
 
 func _ready() -> void:
 	if base_layer == null:
@@ -32,6 +35,7 @@ func _ready() -> void:
 	
 	base_layer.enabled = true
 	_setup_base_light_material()
+	_setup_viewport_glow()
 	_cache_layer_shadow_materials()
 
 	# Initialize all side layers as disabled in-place.
@@ -70,6 +74,7 @@ func _apply_layer_state(instant: bool = false) -> void:
 		_current_tween.kill()
 
 	_update_base_light_direction()
+	_update_viewport_glow_direction()
 	
 	for i in range(_side_layers.size()):
 		var layer = _side_layers[i]
@@ -184,6 +189,43 @@ func _update_base_light_direction() -> void:
 		return
 
 	shader_material.set_shader_parameter("light_position", _light_position_from_active_side())
+
+
+func _setup_viewport_glow() -> void:
+	var material_to_use: Material = viewport_glow_material
+	if material_to_use == null:
+		material_to_use = load(DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH) as Material
+
+	var glow_material := material_to_use as ShaderMaterial
+	if glow_material == null:
+		push_warning("tile-control.gd: Could not load viewport glow material.")
+		return
+
+	_viewport_glow_shader_material = glow_material.duplicate() as ShaderMaterial
+	if _viewport_glow_shader_material == null:
+		return
+
+	var glow_layer := CanvasLayer.new()
+	glow_layer.name = "ViewportGlow"
+	glow_layer.layer = 10
+
+	var glow_rect := ColorRect.new()
+	glow_rect.name = "EdgeGlow"
+	glow_rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	glow_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	glow_rect.material = _viewport_glow_shader_material
+
+	glow_layer.add_child(glow_rect)
+	add_child(glow_layer)
+
+	_update_viewport_glow_direction()
+
+
+func _update_viewport_glow_direction() -> void:
+	if _viewport_glow_shader_material == null:
+		return
+
+	_viewport_glow_shader_material.set_shader_parameter("light_position", _light_position_from_active_side())
 
 
 func _shader_has_uniform(shader: Shader, uniform_name: StringName) -> bool:
