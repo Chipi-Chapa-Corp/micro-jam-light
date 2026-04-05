@@ -32,6 +32,7 @@ FlatButton/constants/outline_size = 20
 FlatButton/font_sizes/font_size = 64
 FlatButton/fonts/font = ExtResource("1_btt64")
 FlatButton/styles/disabled = SubResource("StyleBoxEmpty_6j7ci")
+FlatButton/styles/focus = SubResource("StyleBoxEmpty_6j7ci")
 FlatButton/styles/hover = SubResource("StyleBoxEmpty_6j7ci")
 FlatButton/styles/normal = SubResource("StyleBoxEmpty_6j7ci")
 FlatButton/styles/pressed = SubResource("StyleBoxFlat_pbad3")

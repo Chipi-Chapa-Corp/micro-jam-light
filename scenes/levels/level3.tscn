@@ -9,11 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="8_7eb4w"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="8_a82vw"]
 [ext_resource type="PackedScene" uid="uid://cw6dw8th87avs" path="res://scenes/enemies/blind/blind_enemy.tscn" id="9_hadiw"]
+[ext_resource type="PackedScene" uid="uid://c5ltu4ui81awc" path="res://ui/gui-elements/hint.tscn" id="10_t8mps"]
 
 [node name="Level 2" type="Node2D" unique_id=1604683869]
 
 [node name="Parallax" parent="." unique_id=1221868175 node_paths=PackedStringArray("player") instance=ExtResource("1_8w0pe")]
 player = NodePath("../Player")
+
+[node name="Hint" parent="." unique_id=1362260701 instance=ExtResource("10_t8mps")]
+hint_text = "You don't want to touch those slimes"
+auto_show_static_hint = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("2_7eb4w")

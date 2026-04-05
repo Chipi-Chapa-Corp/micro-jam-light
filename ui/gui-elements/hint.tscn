@@ -3,53 +3,80 @@
 [ext_resource type="Script" uid="uid://yl5ws3tgj7l" path="res://ui/gui-elements/hint.gd" id="1_sgia6"]
 [ext_resource type="Texture2D" uid="uid://b2bjb2qt88s2l" path="res://ui/gui-assets/images/icons/hint.png" id="2_sgia6"]
 [ext_resource type="Texture2D" uid="uid://cb242uanqdoal" path="res://ui/gui-assets/images/backgrounds/ninepatch.png" id="3_icgcg"]
+[ext_resource type="PackedScene" uid="uid://3wpy4xwwypa" path="res://ui/gui-elements/button.tscn" id="4_nifge"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rgio6"]
+content_margin_left = 16.0
+content_margin_right = 16.0
 texture = ExtResource("3_icgcg")
 texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
-[node name="Hint" type="Control" unique_id=503024260 node_paths=PackedStringArray("hover_icon", "bubble", "label")]
-layout_mode = 3
-anchors_preset = 0
+[node name="Hint" type="CanvasLayer" unique_id=503024260]
+layer = 15
 script = ExtResource("1_sgia6")
-hover_icon = NodePath("TextureRect")
-bubble = NodePath("HintBubble")
-label = NodePath("HintBubble/PanelContainer2/MarginContainer/Label")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=2117105217]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Dim" type="ColorRect" parent="." unique_id=1981176645]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.10980392, 0.78039217, 0.55)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=177843752]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1820477533]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 20
+
+[node name="ContentVBox" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=694958010]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="IconCenter" type="CenterContainer" parent="CenterContainer/MarginContainer/ContentVBox" unique_id=85764238]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="CenterContainer/MarginContainer/ContentVBox/IconCenter" unique_id=2117105217]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 40)
 texture = ExtResource("2_sgia6")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="HintBubble" type="Control" parent="." unique_id=831553958]
-anchors_preset = 0
-offset_left = 41.0
-offset_top = 7.0
-offset_right = 81.0
-offset_bottom = 47.0
-
-[node name="PanelContainer2" type="PanelContainer" parent="HintBubble" unique_id=1605269662]
-clip_contents = true
-layout_mode = 0
-offset_right = 498.0
-offset_bottom = 55.0
+[node name="BubblePanel" type="PanelContainer" parent="CenterContainer/MarginContainer/ContentVBox" unique_id=1605269662]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_rgio6")
 
-[node name="MarginContainer" type="MarginContainer" parent="HintBubble/PanelContainer2" unique_id=31456248]
+[node name="BubbleMargin" type="MarginContainer" parent="CenterContainer/MarginContainer/ContentVBox/BubblePanel" unique_id=31456248]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="HintBubble/PanelContainer2/MarginContainer" unique_id=797968957]
-custom_minimum_size = Vector2(450, 0)
+[node name="Label" type="Label" parent="CenterContainer/MarginContainer/ContentVBox/BubblePanel/BubbleMargin" unique_id=797968957]
+custom_minimum_size = Vector2(520, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
 theme_override_constants/outline_size = 9
 autowrap_mode = 3
+horizontal_alignment = 1
+
+[node name="OkButton" parent="CenterContainer/MarginContainer/ContentVBox" unique_id=1899383793 instance=ExtResource("4_nifge")]
+layout_mode = 2
+text = "OK"
+
+[connection signal="pressed" from="CenterContainer/MarginContainer/ContentVBox/OkButton" to="." method="_on_ok_button_pressed"]

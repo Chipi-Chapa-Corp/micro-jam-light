@@ -17,11 +17,6 @@
 player = NodePath("../Player")
 
 [node name="Hint" parent="." unique_id=529739498 instance=ExtResource("10_8pv4m")]
-z_index = 100
-offset_left = 569.0
-offset_top = 548.0
-offset_right = 569.0
-offset_bottom = 548.0
 hint_text = "Archers don't like anybody. Avoid their arrows at any cost"
 auto_show_static_hint = true
 

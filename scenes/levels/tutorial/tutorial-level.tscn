@@ -16,12 +16,11 @@
 player = NodePath("../Player")
 
 [node name="Hint" parent="." unique_id=503024260 instance=ExtResource("9_fl0jr")]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 2.0
-offset_bottom = 2.0
-z_index = 100
-dynamic_tutorial_mode = true
+hint_text = "Use A and D to move.
+Use W or Space to jump.
+There is One Light Source which creates Shadows. Control its position using Arrow Keys.
+Shadows are Solid, you can stand on them or make them push you up. Too easy? Try collecting all the Stars."
+auto_show_static_hint = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("1_5ehse")

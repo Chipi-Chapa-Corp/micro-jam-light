@@ -1,127 +1,126 @@
-extends Control
+extends CanvasLayer
 
 @export_multiline var hint_text := "Put your hint text here"
 @export var dynamic_tutorial_mode := false
 @export var auto_show_static_hint := false
 
-@export var hover_icon: Control
-@export var bubble: Control
-@export var label: Label
-
 const TUTORIAL_HINTS := [
 	"Use A and D to move",
 	"Use W or Space to jump",
-	"There is only One Light Source which creates Shadows. Control its position using Arrow Keys",
+	"There is One Light Source which creates Shadows. Control its position using Arrow Keys",
 	"Shadows are Solid, you can stand on them or make them push you up. Too easy? Try collecting all the Stars.",
 ]
 
-var bubble_pos: Vector2
-var tween: Tween
+@onready var icon: Control = $CenterContainer/MarginContainer/ContentVBox/IconCenter/Icon
+@onready var label: Label = $CenterContainer/MarginContainer/ContentVBox/BubblePanel/BubbleMargin/Label
+@onready var ok_button: Button = $CenterContainer/MarginContainer/ContentVBox/OkButton
+
 var pulse_tween: Tween
 var tutorial_step := 0
+var _is_modal_open := false
+var _paused_for_hint := false
+
 
 func _ready() -> void:
-	label.text = hint_text
-	bubble_pos = bubble.position
-	bubble.visible = false
-	bubble.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	visible = false
 
 	if dynamic_tutorial_mode:
 		set_process(true)
-		hover_icon.visible = true
-		_set_tutorial_step(0)
-		_show_bubble_immediately()
-		start_pulse()
+		_show_tutorial_step(0)
 		return
 
 	if auto_show_static_hint:
 		set_process(false)
-		_show_bubble_immediately()
-		start_pulse()
+		_show_static_hint()
 		return
 
 	set_process(false)
-	hover_icon.mouse_entered.connect(_on_hover_entered)
-	hover_icon.mouse_exited.connect(_on_hover_exited)
 
-	start_pulse()
+
+func _exit_tree() -> void:
+	_resume_game_for_hint()
 
 
 func _process(_delta: float) -> void:
-	if not dynamic_tutorial_mode:
+	if not dynamic_tutorial_mode or _is_modal_open:
 		return
 
 	if tutorial_step == 0 and _is_move_pressed():
-		_advance_tutorial_step()
+		_show_tutorial_step(1)
 	elif tutorial_step == 1 and Input.is_action_just_pressed("jump"):
-		_advance_tutorial_step()
+		_show_tutorial_step(2)
 	elif tutorial_step == 2 and _is_shadow_control_pressed():
-		_advance_tutorial_step()
+		_show_tutorial_step(3)
 
-func _on_hover_entered() -> void:
-	open_hint()
 
-func _on_hover_exited() -> void:
-	close_hint()
+func _show_static_hint() -> void:
+	label.text = hint_text
+	_show_modal()
 
-func open_hint() -> void:
-	if tween:
-		tween.kill()
 
-	bubble.visible = true
-	bubble.position = bubble_pos + Vector2(0, 6)
-	bubble.modulate.a = 0.0
+func _show_tutorial_step(step: int) -> void:
+	tutorial_step = clampi(step, 0, TUTORIAL_HINTS.size() - 1)
+	label.text = TUTORIAL_HINTS[tutorial_step]
+	_show_modal()
 
-	tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(bubble, "position", bubble_pos, 0.15)
-	tween.tween_property(bubble, "modulate:a", 1.0, 0.15)
 
-func close_hint() -> void:
-	if tween:
-		tween.kill()
+func _show_modal() -> void:
+	visible = true
+	_is_modal_open = true
+	_pause_game_for_hint()
+	start_pulse()
+	if is_instance_valid(ok_button):
+		ok_button.grab_focus()
 
-	tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(bubble, "position", bubble_pos + Vector2(0, 6), 0.10)
-	tween.tween_property(bubble, "modulate:a", 0.0, 0.10)
 
-	tween.finished.connect(func():
-		bubble.visible = false
-		bubble.position = bubble_pos
-	)
+func _hide_modal() -> void:
+	_is_modal_open = false
+	stop_pulse()
+	visible = false
+	_resume_game_for_hint()
+
+
+func _pause_game_for_hint() -> void:
+	if get_tree().paused:
+		_paused_for_hint = false
+		return
+
+	get_tree().paused = true
+	_paused_for_hint = true
+
+
+func _resume_game_for_hint() -> void:
+	if not _paused_for_hint:
+		return
+
+	_paused_for_hint = false
+	get_tree().paused = false
+
+
+func _on_ok_button_pressed() -> void:
+	AudioManager.play_ui_button_click()
+	_hide_modal()
+
+	if dynamic_tutorial_mode and tutorial_step >= TUTORIAL_HINTS.size() - 1:
+		set_process(false)
+
 
 func start_pulse() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
 
-	hover_icon.scale = Vector2.ONE
+	icon.scale = Vector2.ONE
 	pulse_tween = create_tween()
 	pulse_tween.set_loops()
-	pulse_tween.tween_property(hover_icon, "scale", Vector2(1.06, 1.06), 0.45)
-	pulse_tween.tween_property(hover_icon, "scale", Vector2.ONE, 0.45)
+	pulse_tween.tween_property(icon, "scale", Vector2(1.06, 1.06), 0.45)
+	pulse_tween.tween_property(icon, "scale", Vector2.ONE, 0.45)
+
 
 func stop_pulse() -> void:
 	if pulse_tween:
 		pulse_tween.kill()
-	hover_icon.scale = Vector2.ONE
-
-
-func _set_tutorial_step(step: int) -> void:
-	tutorial_step = clampi(step, 0, TUTORIAL_HINTS.size() - 1)
-	label.text = TUTORIAL_HINTS[tutorial_step]
-	if dynamic_tutorial_mode:
-		_show_bubble_immediately()
-
-
-func _advance_tutorial_step() -> void:
-	if tutorial_step >= TUTORIAL_HINTS.size() - 1:
-		set_process(false)
-		return
-
-	_set_tutorial_step(tutorial_step + 1)
-	if tutorial_step >= TUTORIAL_HINTS.size() - 1:
-		set_process(false)
+	icon.scale = Vector2.ONE
 
 
 func _is_move_pressed() -> bool:
@@ -135,11 +134,3 @@ func _is_shadow_control_pressed() -> bool:
 		or Input.is_action_just_pressed("shadow_up")
 		or Input.is_action_just_pressed("shadow_down")
 	)
-
-
-func _show_bubble_immediately() -> void:
-	if tween:
-		tween.kill()
-	bubble.visible = true
-	bubble.position = bubble_pos
-	bubble.modulate.a = 1.0
