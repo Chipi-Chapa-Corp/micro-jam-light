@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpgosq86io0k2" path="res://scenes/enemies/shooter/assets/Idle.png" id="2_216ms"]
 [ext_resource type="Texture2D" uid="uid://ca7blvmxrk6fs" path="res://scenes/enemies/shooter/assets/Attack.png" id="2_mjmyr"]
 [ext_resource type="Texture2D" uid="uid://p1c82dnv70rr" path="res://scenes/enemies/shooter/assets/Walk.png" id="2_qxl4a"]
-[ext_resource type="AudioStream" uid="uid://dqmoh0kton3ye" path="res://sounds/shot.ogg" id="5_mcw2l"]
+[ext_resource type="AudioStream" uid="uid://b1d5hog71otnc" path="res://sounds/arrow.mp3" id="5_mcw2l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olefe"]
 atlas = ExtResource("2_216ms")
