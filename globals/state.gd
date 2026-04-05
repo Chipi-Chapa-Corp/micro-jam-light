@@ -1,7 +1,7 @@
 class_name GameState
 extends Node
 
-const LEVEL_COUNT: int = 5
+const LEVEL_COUNT: int = 6
 const LEVEL_SCENES: Dictionary = {
 	1: "res://scenes/levels/tutorial/tutorial-level.tscn",
 	2: "res://scenes/levels/level2.tscn",
@@ -169,10 +169,10 @@ func mark_first_death_hint_shown() -> void:
 
 func reset_progress() -> void:
 	current_level = 1
-	_stars_by_level = [0, 0, 0, 0, 0]
-	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0, 0.0]
-	_skipped_by_level = [false, false, false, false, false]
-	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
+	_stars_by_level = [0, 0, 0, 0, 0, 0]
+	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+	_skipped_by_level = [false, false, false, false, false, false]
+	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
 	_seen_hints_by_level.clear()
 	_pending_first_death_hint = false
 	_has_shown_first_death_hint = false
