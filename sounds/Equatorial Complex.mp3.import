@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dh7ccfq7o4y04"
+path="res://.godot/imported/Equatorial Complex.mp3-44d79023074a6d081c9ab1fb358091d2.mp3str"
+
+[deps]
+
+source_file="res://sounds/Equatorial Complex.mp3"
+dest_files=["res://.godot/imported/Equatorial Complex.mp3-44d79023074a6d081c9ab1fb358091d2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

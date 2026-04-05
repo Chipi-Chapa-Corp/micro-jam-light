@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0giighm2bvf8" path="res://scenes/portal/portal.gd" id="1_gi15j"]
 [ext_resource type="Texture2D" uid="uid://dj3wjk7gx0xjb" path="res://scenes/portal/assets/Idle_Flag.png" id="2_gi15j"]
-[ext_resource type="AudioStream" uid="uid://d4eq6ptnjm28w" path="res://Sounds/1up.wav" id="3_umpx7"]
+[ext_resource type="AudioStream" uid="uid://d4eq6ptnjm28w" path="res://sounds/1up.wav" id="3_umpx7"]
 [ext_resource type="Texture2D" uid="uid://bopnkbssdxwho" path="res://scenes/portal/assets/No_Flag.png" id="3_wuex5"]
 [ext_resource type="Texture2D" uid="uid://cw0g2cyix6m0s" path="res://scenes/portal/assets/Out_Flag.png" id="4_0y8ba"]
 

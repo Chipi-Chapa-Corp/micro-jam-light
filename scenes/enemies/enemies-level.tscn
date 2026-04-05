@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://vq00ot2uic2w" path="res://scenes/levels/tile-control.gd" id="1_ochj3"]
 [ext_resource type="TileSet" uid="uid://1gjuxa0ji5t3" path="res://scenes/levels/assets/test-tileset.tres" id="2_fpble"]
 [ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="3_xdcvx"]
-[ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://Sounds/whoosh.wav" id="4_pdbw7"]
+[ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://sounds/whoosh.wav" id="4_pdbw7"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="5_27tyu"]
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="6_vrlky"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="7_bypd0"]

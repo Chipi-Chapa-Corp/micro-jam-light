@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://3wpy4xwwypa"]
+
+[ext_resource type="Theme" uid="uid://dq5he3f3qilxj" path="res://ui/gui-elements/theme.tres" id="1_8brgs"]
+
+[node name="Button" type="Button" unique_id=1899383793]
+offset_right = 144.0
+offset_bottom = 36.0
+theme = ExtResource("1_8brgs")
+theme_type_variation = &"FlatButton"
+text = "Generic Button"
+flat = true

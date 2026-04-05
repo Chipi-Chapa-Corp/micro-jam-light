@@ -27,7 +27,7 @@ func _on_body_entered(body: Node) -> void:
 	GlobalState.end_level()
 	var next_scene_path: String = GlobalState.get_current_level_scene()
 	if next_scene_path.is_empty():
-		get_tree().change_scene_to_file("res://scenes/game-over/scene.tscn")
+		get_tree().change_scene_to_file("res://ui/screens/game-over/scene.tscn")
 	else:
 		GlobalState.start_level()
 		get_tree().change_scene_to_file(next_scene_path)

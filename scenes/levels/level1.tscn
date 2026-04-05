@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="3_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="4_8a7m2"]
 [ext_resource type="Script" uid="uid://cmmopvnl0i5pn" path="res://scenes/player/player.gd" id="5_1seuy"]
-[ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://Sounds/whoosh.wav" id="5_plydf"]
+[ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://sounds/whoosh.wav" id="5_plydf"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="7_2r1tl"]
 
 [node name="Level 1" type="Node2D" unique_id=1604683869]

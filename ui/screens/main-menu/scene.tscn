@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://c0fvvkbspstgc"]
+
+[ext_resource type="Script" uid="uid://d1oy0wi0l2l2l" path="res://ui/screens/main-menu/control_background.gd" id="1_0ukjf"]
+[ext_resource type="Theme" uid="uid://dq5he3f3qilxj" path="res://ui/gui-elements/theme.tres" id="1_3jxos"]
+[ext_resource type="Script" uid="uid://dounsaprgr6wl" path="res://ui/screens/main-menu/script.gd" id="1_h8jks"]
+[ext_resource type="Texture2D" uid="uid://dcs8ngfdq1ddi" path="res://ui/gui-assets/images/backgrounds/1.png" id="2_2gfjp"]
+[ext_resource type="Texture2D" uid="uid://1qk3r4jar6m4" path="res://ui/gui-assets/images/backgrounds/2.png" id="3_h8jks"]
+[ext_resource type="Texture2D" uid="uid://b6ujnf5xrwyr4" path="res://ui/gui-assets/images/backgrounds/3.png" id="4_dnd4x"]
+[ext_resource type="PackedScene" uid="uid://3wpy4xwwypa" path="res://ui/gui-elements/button.tscn" id="6_2gfjp"]
+
+[node name="Main Menu" type="Control" unique_id=1518368760]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_h8jks")
+
+[node name="ControlBackground" type="Control" parent="." unique_id=1738365675]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ukjf")
+smooth_speed = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BG" type="TextureRect" parent="ControlBackground" unique_id=536426019]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("2_2gfjp")
+stretch_mode = 5
+
+[node name="CloudsBack" type="TextureRect" parent="ControlBackground" unique_id=1498480769]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("3_h8jks")
+
+[node name="CloudsFront" type="TextureRect" parent="ControlBackground" unique_id=399344529]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -288.0
+offset_top = -162.0
+offset_right = 288.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.1, 2.1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_dnd4x")
+
+[node name="Label" type="Label" parent="." unique_id=911466561]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.0
+offset_top = 76.0
+offset_right = 214.0
+offset_bottom = 173.0
+grow_horizontal = 2
+theme = ExtResource("1_3jxos")
+theme_override_colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 127
+text = "Solid Shadows"
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1025822766]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 26.0
+offset_right = 56.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=515167897]
+layout_mode = 2
+alignment = 1
+
+[node name="Start" parent="CenterContainer/VBoxContainer" unique_id=1899383793 instance=ExtResource("6_2gfjp")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Start Game"
+
+[node name="Button" parent="CenterContainer/VBoxContainer" unique_id=1422956014 instance=ExtResource("6_2gfjp")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Credits"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
