@@ -3,9 +3,10 @@ class_name Enemy
 
 @export_group("Movement")
 @export var speed: float = 100.0
-@export_range(0, 32, 1) var waypoint_block_count_left: int = 0
-@export_range(0, 32, 1) var waypoint_block_count_right: int = 0
+@export_range(1, 32, 1) var waypoint_block_count_left: int = 0
+@export_range(1, 32, 1) var waypoint_block_count_right: int = 0
 @export var waypoint_block_size: float = 48.0 # 1.5x tile size
+@export var default_face_right: bool = true
 
 @export_group("Gameplay")
 @export var player: Node2D  # Reference to the player
@@ -18,6 +19,7 @@ class_name Enemy
 @export var overhead_vision_horizontal_tolerance: float = 64.0
 @export var overhead_vision_vertical_tolerance: float = 120.0
 @export var face_player_turn_threshold: float = 6.0
+@export var stationary_can_turn_around: bool = true
 
 @onready var ray_cast: RayCast2D = $RayCast2D  # For vision
 @onready var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
@@ -27,11 +29,14 @@ var is_patrolling: bool = true
 var sees_player_now: bool = false
 var facing_direction_x: int = 1
 var waypoints: Array[Vector2] = [] 
+var is_stationary: bool = true
+var turn_timer: float = 0.0
 
 const DEFAULT_WAYPOINT_DISTANCE: int = 30
 
 func _ready() -> void:
 	_initialize_waypoints()
+	facing_direction_x = 1 if default_face_right else -1
 
 	set_collision_mask_value(wall_collision_layer, collide_with_walls)
 
@@ -39,16 +44,16 @@ func _ready() -> void:
 		ray_cast.enabled = true
 
 	if anim:
-		anim.play("walk")
+		_apply_facing_visual()
+		anim.play("idle" if is_stationary else "walk")
 
 func _initialize_waypoints() -> void:
-	if waypoint_block_count_left > 0 or waypoint_block_count_right > 0:
-		_append_block_boundary_waypoints()
+	if waypoint_block_count_left == 0 and waypoint_block_count_right == 0:
+		is_stationary = true
+		return
 
-	if waypoints.is_empty():
-		push_warning("Waypoints not set for enemy: %s" % name)
-		waypoints.append(global_position - Vector2(DEFAULT_WAYPOINT_DISTANCE, 0))
-		waypoints.append(global_position + Vector2(DEFAULT_WAYPOINT_DISTANCE, 0))
+	is_stationary = false
+	_append_block_boundary_waypoints()
 
 func _append_block_boundary_waypoints() -> void:
 	if waypoint_block_count_left > 0:
@@ -61,9 +66,24 @@ func _append_block_boundary_waypoints() -> void:
 		if not waypoints.has(right_waypoint):
 			waypoints.append(right_waypoint)
 
+func _handle_stationary_behavior(delta: float) -> void:
+	if anim:
+		anim.play("idle")
+	if not stationary_can_turn_around:
+		return
+	turn_timer += delta
+	if turn_timer >= 3.0:
+		facing_direction_x = -facing_direction_x
+		_apply_facing_visual()
+		turn_timer = 0.0
+
 func _physics_process(_delta: float) -> void:
-	_update_facing_for_overhead_player()
+	if not is_stationary:
+		_update_facing_for_overhead_player()
 	sees_player_now = can_see_player()
+
+	if is_stationary:
+		_handle_stationary_behavior(_delta)
 
 	if is_patrolling:
 		patrol()
@@ -85,14 +105,19 @@ func _check_player_collision() -> void:
 func _process(_delta: float) -> void:
 	queue_redraw()
 
-func patrol() -> void:
-	if waypoints.is_empty():
+func patrol() -> void:	
+	if is_stationary or waypoints.is_empty():
 		velocity = Vector2.ZERO
+		if anim:
+			anim.play("idle")
 		return
 
 	var target = waypoints[current_waypoint_index]
 	var direction = (target - global_position).normalized()
 	velocity = direction * speed
+	
+	if anim:
+		anim.play("walk")
 	
 	if global_position.distance_to(target) < 10:  
 		current_waypoint_index = (current_waypoint_index + 1) % waypoints.size()
@@ -135,8 +160,7 @@ func _update_facing_for_overhead_player() -> void:
 		return
 
 	facing_direction_x = int(sign(to_player.x))
-	if anim:
-		anim.flip_h = facing_direction_x > 0
+	_apply_facing_visual()
 
 func _draw() -> void:
 	if not show_vision_debug:
@@ -166,8 +190,12 @@ func update_facing_direction() -> void:
 		return
 
 	facing_direction_x = int(sign(velocity.x))
-	if anim:
-		anim.flip_h = facing_direction_x > 0
+	_apply_facing_visual()
 
 func attack() -> void:
 	pass  
+
+func _apply_facing_visual() -> void:
+	if anim:
+		# Source sprite faces left by default, so flip to look right.
+		anim.flip_h = facing_direction_x > 0

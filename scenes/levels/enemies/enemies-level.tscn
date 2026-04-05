@@ -69,10 +69,21 @@ waypoint_block_count_right = 1
 
 [node name="ChaserEnemy" parent="." unique_id=1378003672 instance=ExtResource("9_yaftl")]
 position = Vector2(512, 585)
+speed = null
 waypoint_block_count_left = 2
 waypoint_block_count_right = 2
+waypoint_block_size = null
+collide_with_walls = null
+wall_collision_layer = null
+show_vision_debug = null
+vision_range = null
+overhead_vision_horizontal_tolerance = null
+overhead_vision_vertical_tolerance = null
+face_player_turn_threshold = null
 
 [node name="ShooterEnemy" parent="." unique_id=1207885831 instance=ExtResource("10_sfba8")]
-position = Vector2(656, 423)
+position = Vector2(656, 424)
+always_facing_right = true
 waypoint_block_count_left = 1
 waypoint_block_count_right = 1
+stationary_can_turn_around = false

@@ -2,8 +2,18 @@ extends "res://scenes/enemies/enemy.gd"
 
 const BOUNDARY_EPSILON: float = 1.0
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if not is_stationary:
+		_update_facing_for_overhead_player()
 	sees_player_now = can_see_player()
+
+	if is_stationary:
+		_handle_stationary_behavior(delta)
+		velocity = Vector2.ZERO
+		_play_idle_or_walk("idle")
+		move_and_slide()
+		_check_player_collision()
+		return
 
 	if sees_player_now and is_instance_valid(player):
 		is_patrolling = false
