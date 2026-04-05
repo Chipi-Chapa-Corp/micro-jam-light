@@ -6,7 +6,9 @@
 [ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="5_xx6b8"]
 [ext_resource type="AudioStream" uid="uid://d20b0bt80f22g" path="res://sounds/whoosh.wav" id="6_f62st"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="7_w24lh"]
+[ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="8_4vryo"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="8_5sfmg"]
+[ext_resource type="PackedScene" uid="uid://dhfm1rubc5ic8" path="res://scenes/enemies/chaser/chaser_enemy.tscn" id="9_g1ckg"]
 
 [node name="Level 1" type="Node2D" unique_id=1604683869]
 
@@ -47,7 +49,40 @@ stream = ExtResource("6_f62st")
 volume_db = -10.0
 
 [node name="Player" parent="." unique_id=217580263 instance=ExtResource("7_w24lh")]
-position = Vector2(15, 17)
+position = Vector2(16, 21)
 
 [node name="Portal" parent="." unique_id=1733251554 instance=ExtResource("8_5sfmg")]
 position = Vector2(1128, 328)
+
+[node name="Stars" type="Node" parent="." unique_id=1257505808]
+
+[node name="Star" parent="Stars" unique_id=938603623 instance=ExtResource("8_4vryo")]
+position = Vector2(15, 175)
+
+[node name="Star2" parent="Stars" unique_id=2081519847 instance=ExtResource("8_4vryo")]
+position = Vector2(527, 207)
+
+[node name="Star3" parent="Stars" unique_id=78335346 instance=ExtResource("8_4vryo")]
+position = Vector2(366, 431)
+
+[node name="ChaserEnemy" parent="Stars" unique_id=1968472386 instance=ExtResource("9_g1ckg")]
+position = Vector2(448, 488)
+waypoint_block_count_left = 2.0
+waypoint_block_count_right = 2.0
+
+[node name="ChaserEnemy2" parent="Stars" unique_id=505950475 instance=ExtResource("9_g1ckg")]
+position = Vector2(432, 200)
+waypoint_block_count_left = 1.5
+waypoint_block_count_right = 3.5
+
+[node name="ChaserEnemy3" parent="Stars" unique_id=1887757402 instance=ExtResource("9_g1ckg")]
+position = Vector2(656, 40)
+waypoint_block_count_left = 1.5
+waypoint_block_count_right = 2.5
+
+[node name="ChaserEnemy4" parent="Stars" unique_id=1663080843 instance=ExtResource("9_g1ckg")]
+position = Vector2(848, 40)
+waypoint_block_count_left = 2.5
+waypoint_block_count_right = 1.5
+
+[node name="Enemies" type="Node" parent="." unique_id=380614517]
