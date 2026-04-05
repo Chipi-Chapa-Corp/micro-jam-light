@@ -4,7 +4,6 @@ extends Control
 
 func _on_start_pressed() -> void:
 	GlobalState.start_new_run()
-	AudioManager.play_ui_button_click()
 	get_tree().change_scene_to_packed(start_scene)
 
 

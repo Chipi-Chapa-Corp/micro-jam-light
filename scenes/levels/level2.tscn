@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://er03wh1b4pa7"]
 
-[ext_resource type="PackedScene" uid="uid://cohm4wa3aq7xm" path="res://ui/gui-elements/parallax.tscn" id="1_k0mew"]
+[ext_resource type="PackedScene" path="res://ui/gui-elements/parallax.tscn" id="1_k0mew"]
 [ext_resource type="Script" uid="uid://vq00ot2uic2w" path="res://scenes/levels/tile-control.gd" id="2_b0vvs"]
 [ext_resource type="TileSet" uid="uid://dodfa3fcd3xum" path="res://scenes/levels/assets/tileset.tres" id="3_oyk6k"]
 [ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="5_8i1lk"]
