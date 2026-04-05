@@ -1,100 +1,72 @@
 [gd_scene format=3 uid="uid://dhfm1rubc5ic8"]
 
 [ext_resource type="Script" uid="uid://bfnrekfqqkrb8" path="res://scenes/enemies/chaser/chaser_enemy.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://ci0w3n7lp83cq" path="res://scenes/enemies/chaser/assets/Idle.png" id="2_cl2e2"]
-[ext_resource type="Texture2D" uid="uid://diesptp8wulk1" path="res://scenes/enemies/chaser/assets/Run.png" id="2_g8ymt"]
+[ext_resource type="Texture2D" uid="uid://s4kischs8fnd" path="res://scenes/enemies/chaser/assets/Red_Slime/Idle.png" id="2_cl2e2"]
+[ext_resource type="Texture2D" uid="uid://bwjia73d8pqwe" path="res://scenes/enemies/chaser/assets/Red_Slime/Walk.png" id="3_cl2e2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7gjd"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(0, 0, 48, 48)
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bxs3x"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(48, 0, 48, 48)
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ehql"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(96, 0, 48, 48)
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_okpt6"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(144, 0, 48, 48)
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qx4ly"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(192, 0, 48, 48)
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pcjsp"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(240, 0, 48, 48)
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3tfal"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(288, 0, 48, 48)
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nu1yi"]
 atlas = ExtResource("2_cl2e2")
-region = Rect2(336, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cevnj"]
-atlas = ExtResource("2_cl2e2")
-region = Rect2(384, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bj1rx"]
-atlas = ExtResource("2_cl2e2")
-region = Rect2(432, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_obv12"]
-atlas = ExtResource("2_cl2e2")
-region = Rect2(480, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cl2e2"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(0, 0, 48, 48)
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bekey"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(48, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8usfc"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(96, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4742y"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(144, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hi04j"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(192, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(384, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsevk"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(240, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(512, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evl4b"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(288, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xof4"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(336, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(768, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6kwk"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(384, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxqqc"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(432, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hufib"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(480, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tdmnu"]
-atlas = ExtResource("2_g8ymt")
-region = Rect2(528, 0, 48, 48)
+atlas = ExtResource("3_cl2e2")
+region = Rect2(896, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j7gjd"]
 animations = [{
@@ -122,24 +94,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nu1yi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cevnj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bj1rx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_obv12")
 }],
 "loop": true,
 "name": &"idle",
 "speed": 10.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cl2e2")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bekey")
 }, {
@@ -163,15 +123,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q6kwk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rxqqc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hufib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tdmnu")
 }],
 "loop": true,
 "name": &"walk",
@@ -179,18 +130,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_chaser_body"]
-size = Vector2(18, 20)
+size = Vector2(18, 14)
 
 [node name="ChaserEnemy" type="CharacterBody2D" unique_id=1968472386]
 script = ExtResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1805501700]
+position = Vector2(0, -3.5)
+scale = Vector2(0.43, 0.43)
 sprite_frames = SubResource("SpriteFrames_j7gjd")
-animation = &"idle"
-frame_progress = 0.00014524457
+animation = &"walk"
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1461406517]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1798392567]
-position = Vector2(0, 10)
+position = Vector2(0, 17)
 shape = SubResource("RectangleShape2D_chaser_body")
