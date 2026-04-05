@@ -6,3 +6,7 @@ addons/ziva_agent/
 .vscode/
 .codex
 .DS_Store
+/builds/*
+!/builds/web/
+/builds/web/*
+!/builds/web/.gitkeep
