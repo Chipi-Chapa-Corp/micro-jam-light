@@ -17,7 +17,7 @@
 player = NodePath("../Player")
 
 [node name="Hint" parent="." unique_id=1362260701 instance=ExtResource("10_t8mps")]
-hint_text = "You don't want to touch those slimes"
+hint_text = "You don't want to touch those Slimes"
 auto_show_static_hint = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]

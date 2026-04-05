@@ -9,11 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="8_4vryo"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="8_5sfmg"]
 [ext_resource type="PackedScene" uid="uid://dhfm1rubc5ic8" path="res://scenes/enemies/chaser/chaser_enemy.tscn" id="9_g1ckg"]
+[ext_resource type="PackedScene" uid="uid://c5ltu4ui81awc" path="res://ui/gui-elements/hint.tscn" id="10_h4n7t"]
 
 [node name="Level 1" type="Node2D" unique_id=1604683869]
 
 [node name="Parallax" parent="." unique_id=1221868175 node_paths=PackedStringArray("player") instance=ExtResource("1_s45gt")]
 player = NodePath("../Player")
+
+[node name="Hint" parent="." unique_id=1552697903 instance=ExtResource("10_h4n7t")]
+hint_text = "Beware of Red Slimes as they can sense you"
+auto_show_static_hint = true
+place_bottom_right = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("2_4vryo")

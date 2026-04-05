@@ -6,6 +6,7 @@ extends CanvasLayer
 @export var show_only_once_per_level := true
 @export var show_as_modal := false
 @export_range(0.0, 30.0, 0.1, "or_greater") var hover_intro_seconds := 5.0
+@export var place_bottom_right := false
 
 const TUTORIAL_HINTS := [
 	"Use A and D to move",
@@ -35,6 +36,7 @@ var _hover_intro_active := false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	_apply_hover_corner()
 	_configure_hover_events()
 	_hide_everything()
 
@@ -153,6 +155,28 @@ func _show_hover_idle() -> void:
 	hover_label.text = hint_text
 	_close_hover_bubble()
 	start_pulse(hover_icon)
+
+
+func _apply_hover_corner() -> void:
+	if not place_bottom_right:
+		return
+
+	hover_root.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT, false)
+	# Keep the original icon-left / bubble-right layout, but pin the whole hint to bottom-right.
+	hover_root.offset_left = -556.0
+	hover_root.offset_top = -86.0
+	hover_root.offset_right = -16.0
+	hover_root.offset_bottom = -16.0
+
+	hover_icon.offset_left = 0.0
+	hover_icon.offset_top = 0.0
+	hover_icon.offset_right = 40.0
+	hover_icon.offset_bottom = 40.0
+
+	hover_bubble.offset_left = 41.0
+	hover_bubble.offset_top = 7.0
+	hover_bubble.offset_right = 81.0
+	hover_bubble.offset_bottom = 47.0
 
 
 func _open_hover_bubble() -> void:
