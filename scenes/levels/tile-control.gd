@@ -13,6 +13,7 @@ var _side_layers: Array[TileMapLayer] = []
 var active_side_index := 0
 var previous_side_index := -1
 var _current_tween: Tween
+var _layer_shadow_materials: Array = []
 
 func _ready() -> void:
 	if base_layer == null:
@@ -27,12 +28,13 @@ func _ready() -> void:
 	_add_side_layer(right_layer, "right")
 	
 	base_layer.enabled = true
+	_cache_layer_shadow_materials()
 
-	# Initialize all side layers as disabled and offset
+	# Initialize all side layers as disabled in-place.
 	for i in range(_side_layers.size()):
 		var layer = _side_layers[i]
 		layer.enabled = false
-		layer.position = _get_hidden_offset(i)
+		layer.position = Vector2.ZERO
 
 	active_side_index = 0
 	_apply_layer_state(true)
@@ -65,36 +67,70 @@ func _apply_layer_state(instant: bool = false) -> void:
 	
 	for i in range(_side_layers.size()):
 		var layer = _side_layers[i]
-		var hidden_pos = _get_hidden_offset(i)
 		
 		if i == active_side_index:
+			layer.position = Vector2.ZERO
+			layer.enabled = true
+
 			if instant:
-				layer.position = Vector2.ZERO
-				layer.enabled = true
+				_set_layer_cast_progress(1.0, i)
 			else:
-				# Always start from hidden position to ensure sync
-				layer.position = hidden_pos
-				layer.enabled = true
+				# Reveal in-place via shader progress; no positional offset.
+				_set_layer_cast_progress(0.0, i)
 				
 				_current_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 				_current_tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-				_current_tween.tween_property(layer, "position", Vector2.ZERO, transition_duration)
+				_current_tween.tween_method(Callable(self, "_set_layer_cast_progress").bind(i), 0.0, 1.0, transition_duration)
 		else:
 			# Instantly hide and disable all other layers
 			layer.enabled = false
-			layer.position = hidden_pos
+			layer.position = Vector2.ZERO
 
 
-func _get_hidden_offset(index: int) -> Vector2:
-	# Hidden offset should be roughly the length of the shadow.
-	# From shadow.tres, max_tiles is 3, so 3 * 32 = 96.
-	const OFFSET_VAL = 96.0
-	match index:
-		0: return Vector2(0, -OFFSET_VAL) # Top shadow grows DOWN
-		1: return Vector2(-OFFSET_VAL, 0) # Left shadow grows RIGHT
-		2: return Vector2(0, OFFSET_VAL)  # Bottom shadow grows UP
-		3: return Vector2(OFFSET_VAL, 0)  # Right shadow grows LEFT
-	return Vector2.ZERO
+func _cache_layer_shadow_materials() -> void:
+	_layer_shadow_materials.clear()
+
+	for layer in _side_layers:
+		var materials: Array = []
+		var seen := {}
+
+		if layer.tile_set == null:
+			_layer_shadow_materials.append(materials)
+			continue
+
+		for cell in layer.get_used_cells():
+			var source_id := layer.get_cell_source_id(cell)
+			if source_id == -1:
+				continue
+
+			var tile_source := layer.tile_set.get_source(source_id)
+			if tile_source is TileSetAtlasSource:
+				var atlas_source := tile_source as TileSetAtlasSource
+				var atlas_coords := layer.get_cell_atlas_coords(cell)
+				var alternative := layer.get_cell_alternative_tile(cell)
+				var tile_data := atlas_source.get_tile_data(atlas_coords, alternative)
+				if tile_data == null:
+					continue
+
+				var tile_material := tile_data.material
+				if tile_material is ShaderMaterial:
+					var shader_material := tile_material as ShaderMaterial
+					var mat_id := shader_material.get_instance_id()
+					if not seen.has(mat_id):
+						seen[mat_id] = true
+						materials.append(shader_material)
+
+		_layer_shadow_materials.append(materials)
+
+
+func _set_layer_cast_progress(progress: float, layer_index: int) -> void:
+	if layer_index < 0 or layer_index >= _layer_shadow_materials.size():
+		return
+
+	var clamped_progress := clampf(progress, 0.0, 1.0)
+	for shader_mat in _layer_shadow_materials[layer_index]:
+		if shader_mat is ShaderMaterial:
+			(shader_mat as ShaderMaterial).set_shader_parameter("cast_progress", clamped_progress)
 
 
 func _add_side_layer(layer: TileMapLayer, layer_name: String) -> void:

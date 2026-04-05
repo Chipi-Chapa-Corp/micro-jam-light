@@ -5,6 +5,8 @@ uniform int direction = 0;   // 0=Bottom, 1=Top, 2=Right, 3=Left
 uniform int step_index = 0;  // 0, 1, 2
 uniform float tile_size = 32.0;
 uniform float max_tiles = 3.0;
+uniform float cast_progress = 1.0; // 0..1 shadow reveal
+uniform float reveal_softness_px = 2.0;
 
 uniform float pixel_block_px = 6.0;     // size of pixelized gradient steps
 uniform float alpha_steps = 0.2;        // 0 = off
@@ -60,5 +62,10 @@ void fragment() {
 		fade = floor(fade * alpha_steps) / alpha_steps;
 	}
 
-	COLOR = vec4(shadow_color.rgb, shadow_color.a * fade * src_alpha);
+	// Keep shadow fixed in-bounds and reveal outward from the panel side.
+	float cast_t = clamp(cast_progress, 0.0, 1.0);
+	float reveal_limit = cast_t * (max_dist + reveal_softness_px) - reveal_softness_px;
+	float reveal = 1.0 - smoothstep(reveal_limit, reveal_limit + reveal_softness_px, dist_px);
+
+	COLOR = vec4(shadow_color.rgb, shadow_color.a * fade * reveal * src_alpha);
 }
