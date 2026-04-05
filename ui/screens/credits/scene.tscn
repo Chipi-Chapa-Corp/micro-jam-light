@@ -224,6 +224,17 @@ text = "Platformer tilesets and entities by CraftPix"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label10" type="Label" parent="CenterContainer/VBoxContainer/VBoxContainer2" unique_id=452404491]
+layout_mode = 2
+theme = ExtResource("1_h4857")
+theme_override_colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_travo")
+theme_override_font_sizes/font_size = 20
+text = "Arrow Impact by omerbhatti34  -  License: Creative Commons 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CloseButton" parent="." unique_id=1613189505 instance=ExtResource("8_0a0dw")]
 layout_mode = 1
 anchors_preset = 1
