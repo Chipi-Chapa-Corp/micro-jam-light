@@ -2,6 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bgdvkld6sbqn4" path="res://ui/screens/pause/pause_menu.gd" id="1_pause_script"]
 [ext_resource type="PackedScene" uid="uid://3wpy4xwwypa" path="res://ui/gui-elements/button.tscn" id="2_hqrfn"]
+[ext_resource type="Texture2D" uid="uid://cb242uanqdoal" path="res://ui/gui-assets/images/backgrounds/ninepatch.png" id="2_oxr25"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w7jfi"]
+content_margin_left = 16.0
+content_margin_right = 16.0
+texture = ExtResource("2_oxr25")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1635654590]
 script = ExtResource("1_pause_script")
@@ -12,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.65)
+color = Color(0, 0.10980392, 0.78039217, 0.47058824)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=307526855]
 anchors_preset = 15
@@ -21,32 +31,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="PanelContainer" parent="CenterContainer" unique_id=1528193537]
-custom_minimum_size = Vector2(320, 220)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1540318959]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_w7jfi")
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel" unique_id=325981273]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=325981273]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="MenuVBox" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer" unique_id=1014896330]
+[node name="MenuVBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1014896330]
 layout_mode = 2
 
-[node name="Button" parent="CenterContainer/Panel/MarginContainer/MenuVBox" unique_id=1899383793 instance=ExtResource("2_hqrfn")]
+[node name="Button" parent="CenterContainer/PanelContainer/MarginContainer/MenuVBox" unique_id=1899383793 instance=ExtResource("2_hqrfn")]
 layout_mode = 2
 text = "Resume"
 
-[node name="Button2" parent="CenterContainer/Panel/MarginContainer/MenuVBox" unique_id=206583408 instance=ExtResource("2_hqrfn")]
+[node name="Button2" parent="CenterContainer/PanelContainer/MarginContainer/MenuVBox" unique_id=206583408 instance=ExtResource("2_hqrfn")]
 layout_mode = 2
 text = "To Main Menu"
 
-[node name="Button3" parent="CenterContainer/Panel/MarginContainer/MenuVBox" unique_id=978158914 instance=ExtResource("2_hqrfn")]
+[node name="Button3" parent="CenterContainer/PanelContainer/MarginContainer/MenuVBox" unique_id=978158914 instance=ExtResource("2_hqrfn")]
 layout_mode = 2
 text = "Quit Game"
 
-[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/MenuVBox/Button" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/MenuVBox/Button2" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="CenterContainer/Panel/MarginContainer/MenuVBox/Button3" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/MenuVBox/Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/MenuVBox/Button2" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/MenuVBox/Button3" to="." method="_on_quit_button_pressed"]
