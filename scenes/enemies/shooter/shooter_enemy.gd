@@ -6,6 +6,7 @@ extends "res://scenes/enemies/enemy.gd"
 @export var is_stationary_mode: bool = false
 @export var can_turn_around_in_stationary: bool = true
 @export var facing_right_no_turn: bool = false
+@onready var sfx_shoot = $sfxShoot
 
 var shoot_timer: float = 0.0
 var bullet_offset_x: float = 10.0 
@@ -100,7 +101,7 @@ func _stop_attack() -> void:
 func shoot() -> void:
 	if not is_instance_valid(player):
 		return
-
+	sfx_shoot.play()
 	var bullet = bullet_scene.instantiate()
 	var spawn_offset := Vector2(
 		float(facing_direction_x) * bullet_offset_x, bullet_offset_y

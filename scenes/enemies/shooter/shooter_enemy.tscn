@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bpgosq86io0k2" path="res://scenes/enemies/shooter/assets/Idle.png" id="2_216ms"]
 [ext_resource type="Texture2D" uid="uid://ca7blvmxrk6fs" path="res://scenes/enemies/shooter/assets/Attack.png" id="2_mjmyr"]
 [ext_resource type="Texture2D" uid="uid://p1c82dnv70rr" path="res://scenes/enemies/shooter/assets/Walk.png" id="2_qxl4a"]
+[ext_resource type="AudioStream" uid="uid://dqmoh0kton3ye" path="res://sounds/shot.ogg" id="5_mcw2l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olefe"]
 atlas = ExtResource("2_216ms")
@@ -250,3 +251,6 @@ frame_progress = 0.3637383
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350319064 groups=["enemy"]]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_shooter_body")
+
+[node name="sfxShoot" type="AudioStreamPlayer2D" parent="." unique_id=296138164]
+stream = ExtResource("5_mcw2l")
