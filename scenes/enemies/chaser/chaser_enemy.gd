@@ -2,6 +2,10 @@ extends "res://scenes/enemies/enemy.gd"
 
 const BOUNDARY_EPSILON: float = 1.0
 
+func _ready() -> void:
+	super._ready()
+	_set_initial_waypoint_index()
+
 func _physics_process(delta: float) -> void:
 	if not is_stationary:
 		_update_facing_for_overhead_player()
@@ -105,3 +109,9 @@ func _play_idle_or_walk(preferred_animation: StringName) -> void:
 		anim.play(preferred_animation)
 	elif frames.has_animation(&"walk"):
 		anim.play(&"walk")
+
+func _set_initial_waypoint_index() -> void:
+	if waypoints.size() != 2:
+		return
+
+	current_waypoint_index = 1 if default_face_right else 0

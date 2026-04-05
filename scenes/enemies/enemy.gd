@@ -3,8 +3,8 @@ class_name Enemy
 
 @export_group("Movement")
 @export var speed: float = 100.0
-@export_range(0, 6, 0.5) var waypoint_block_count_left: float = 0
-@export_range(0, 6, 0.5) var waypoint_block_count_right: float = 0
+@export_range(0, 12, 0.5) var waypoint_block_count_left: float = 0
+@export_range(0, 12, 0.5) var waypoint_block_count_right: float = 0
 @export var waypoint_block_size: float = 32.0 # 1 tile size
 @export var default_face_right: bool = true
 
@@ -23,7 +23,7 @@ class_name Enemy
 @onready var ray_cast: RayCast2D = $RayCast2D  # For vision
 @onready var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
-var stationary_can_turn_around: bool = true
+var stationary_can_turn_around: bool = false
 var current_waypoint_index: int = 0
 var is_patrolling: bool = true
 var sees_player_now: bool = false
