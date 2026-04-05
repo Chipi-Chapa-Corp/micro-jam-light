@@ -110,6 +110,6 @@ frame_progress = 0.29768565
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1650518834]
 enabled = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=160532941]
 position = Vector2(0, 10)
 shape = SubResource("RectangleShape2D_blind_body")

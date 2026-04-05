@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bphs6fsmkshan"]
 
 [ext_resource type="Script" uid="uid://dwxbwfdrorcsy" path="res://scenes/audio-manager/audio-manager.gd" id="1_a7g66"]
-[ext_resource type="AudioStream" uid="uid://le11hftclwri" path="res://Sounds/switch_006.ogg" id="2_jaiqx"]
+[ext_resource type="AudioStream" uid="uid://bnob3tt5ccln3" path="res://sounds/switch_006.ogg" id="2_jaiqx"]
 
 [node name="AudioManager" type="Node2D" unique_id=2079022453]
 script = ExtResource("1_a7g66")

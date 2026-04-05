@@ -4,8 +4,7 @@
 [ext_resource type="TileSet" uid="uid://1gjuxa0ji5t3" path="res://scenes/levels/assets/test-tileset.tres" id="2_1seuy"]
 [ext_resource type="Material" uid="uid://bka6giegw211v" path="res://scenes/levels/materials/test-shadow-material.tres" id="3_2r1tl"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="4_8a7m2"]
-[ext_resource type="Script" uid="uid://cmmopvnl0i5pn" path="res://scenes/player/player.gd" id="5_1seuy"]
-[ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://sounds/whoosh.wav" id="5_plydf"]
+[ext_resource type="AudioStream" uid="uid://d20b0bt80f22g" path="res://sounds/whoosh.wav" id="5_plydf"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="7_2r1tl"]
 
 [node name="Level 1" type="Node2D" unique_id=1604683869]
@@ -43,9 +42,8 @@ tile_set = ExtResource("2_1seuy")
 stream = ExtResource("5_plydf")
 volume_db = -10.0
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=217580263 groups=["player"] instance=ExtResource("4_8a7m2")]
+[node name="Player" parent="." unique_id=217580263 instance=ExtResource("4_8a7m2")]
 position = Vector2(81, 273)
-script = ExtResource("5_1seuy")
 
 [node name="Portal" parent="." unique_id=1733251554 instance=ExtResource("7_2r1tl")]
 position = Vector2(143, 264)

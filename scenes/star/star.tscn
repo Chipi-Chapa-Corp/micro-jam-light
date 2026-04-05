@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cjjw7xadw7e0j" path="res://scenes/star/assets/star.png" id="1_3ji66"]
 [ext_resource type="Script" uid="uid://bbcq0r5wuxons" path="res://scenes/star/star.gd" id="2_e8616"]
-[ext_resource type="AudioStream" uid="uid://bttekpfqq0m03" path="res://sounds/starTook.wav" id="3_buljs"]
+[ext_resource type="AudioStream" uid="uid://jfcft1wcugiq" path="res://sounds/starTook.wav" id="3_buljs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icysq"]
 size = Vector2(10, 10)
