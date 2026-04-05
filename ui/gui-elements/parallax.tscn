@@ -1,9 +1,28 @@
 [gd_scene format=3 uid="uid://cohm4wa3aq7xm"]
 
 [ext_resource type="Script" uid="uid://ctqhfw5r5iksc" path="res://ui/gui-elements/parallax.gd" id="1_j42h4"]
+[ext_resource type="Shader" uid="uid://dehlr3or6tfq8" path="res://ui/gui-elements/parallax.gdshader" id="2_fiqud"]
 [ext_resource type="Texture2D" uid="uid://dcs8ngfdq1ddi" path="res://ui/gui-assets/images/backgrounds/1.png" id="2_k5lq8"]
 [ext_resource type="Texture2D" uid="uid://1qk3r4jar6m4" path="res://ui/gui-assets/images/backgrounds/2.png" id="3_fiqud"]
 [ext_resource type="Texture2D" uid="uid://b6ujnf5xrwyr4" path="res://ui/gui-assets/images/backgrounds/3.png" id="4_qx4th"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx4th"]
+shader = ExtResource("2_fiqud")
+shader_parameter/saturation = 0.7270000345325
+shader_parameter/fade = 0.18000000855
+shader_parameter/tint = Color(0.90949357, 0.9999998, 0.9996763, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5lq8"]
+shader = ExtResource("2_fiqud")
+shader_parameter/saturation = 0.8130000386175
+shader_parameter/fade = 0.10000000475
+shader_parameter/tint = Color(0.98, 0.98, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fiqud"]
+shader = ExtResource("2_fiqud")
+shader_parameter/saturation = 0.90000004275
+shader_parameter/fade = 0.0400000019
+shader_parameter/tint = Color(0.8986653, 0.8973527, 0.9999997, 1)
 
 [node name="Parallax" type="Control" unique_id=1221868175]
 layout_mode = 3
@@ -11,6 +30,7 @@ anchors_preset = 0
 script = ExtResource("1_j42h4")
 
 [node name="Sky" type="TextureRect" parent="." unique_id=812875192]
+material = SubResource("ShaderMaterial_qx4th")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +42,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="CloudsBack" type="TextureRect" parent="." unique_id=715022405]
+material = SubResource("ShaderMaterial_k5lq8")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +54,7 @@ expand_mode = 1
 stretch_mode = 6
 
 [node name="CloudsFront" type="TextureRect" parent="." unique_id=554273135]
+material = SubResource("ShaderMaterial_fiqud")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
