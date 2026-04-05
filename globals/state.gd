@@ -37,6 +37,7 @@ func start_level(level: int = -1) -> void:
 		push_warning("start_level: level must be between 1 and %d" % LEVEL_COUNT)
 		return
 
+	current_level = level
 	_start_tick_by_level[_to_index(level)] = Time.get_ticks_msec()
 
 
@@ -128,7 +129,28 @@ func reset_progress() -> void:
 	_skipped_by_level = [false, false, false, false, false]
 	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
 
+
+func start_new_run() -> void:
+	reset_progress()
+	start_level(1)
+
+
+func restart_run_from_level(level: int) -> void:
+	if not _is_valid_level(level):
+		push_warning("restart_run_from_level: level must be between 1 and %d" % LEVEL_COUNT)
+		return
+
+	for i in range(_to_index(level), LEVEL_COUNT):
+		_stars_by_level[i] = 0
+		_time_by_level_seconds[i] = 0.0
+		_skipped_by_level[i] = false
+		_start_tick_by_level[i] = _NOT_STARTED_TICK
+
+	start_level(level)
+
+
 func reset_current_level() -> void:
 	_stars_by_level[_to_index(current_level)] = 0
+	_time_by_level_seconds[_to_index(current_level)] = 0.0
 	_skipped_by_level[_to_index(current_level)] = false
 	start_level(current_level)

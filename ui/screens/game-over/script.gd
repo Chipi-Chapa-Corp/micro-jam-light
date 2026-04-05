@@ -66,8 +66,7 @@ func _build_level_row(level: int) -> HBoxContainer:
 
 
 func _on_restart_level_pressed(level: int, scene_path: String) -> void:
-	GlobalState.current_level = level
-	GlobalState.start_level(level)
+	GlobalState.restart_run_from_level(level)
 	get_tree().change_scene_to_file(scene_path)
 
 
