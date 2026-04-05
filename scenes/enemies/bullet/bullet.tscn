@@ -1,18 +1,16 @@
 [gd_scene format=3 uid="uid://c842plxbngqho"]
 
 [ext_resource type="Script" uid="uid://bctfk81moxmkh" path="res://scenes/enemies/bullet/bullet.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bvf674iv1fgkk" path="res://scenes/enemies/bullet/assets/Arrow.png" id="2_b52me"]
+[ext_resource type="Texture2D" uid="uid://q7bb4jkpj2ax" path="res://scenes/enemies/bullet/assets/Cannonball1.png" id="2_b52me"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(9, 2)
+size = Vector2(10, 10)
 
 [node name="Bullet" type="Area2D" unique_id=1006065476]
 script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=667339773]
-position = Vector2(-0.5, 0)
 shape = SubResource("1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1543616727]
-scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_b52me")
