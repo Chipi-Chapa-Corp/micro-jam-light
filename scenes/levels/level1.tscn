@@ -50,7 +50,7 @@ stream = ExtResource("5_plydf")
 volume_db = -10.0
 
 [node name="Player" parent="." unique_id=217580263 instance=ExtResource("4_8a7m2")]
-position = Vector2(360, 596)
+position = Vector2(913, 596)
 
 [node name="Portal" parent="." unique_id=1733251554 instance=ExtResource("7_2r1tl")]
 position = Vector2(1099, 40)
