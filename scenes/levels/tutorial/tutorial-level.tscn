@@ -20,11 +20,8 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 2.0
 offset_bottom = 2.0
-hint_text = "Control robot with WASD and light with arrows. Shadows are solid, use them for your advandage.
-
-Shadow can crash you, so be careful.
-
-Collect all stars to perfect level."
+z_index = 100
+dynamic_tutorial_mode = true
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("1_5ehse")
