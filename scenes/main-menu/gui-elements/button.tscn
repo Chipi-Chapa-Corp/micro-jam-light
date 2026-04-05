@@ -6,4 +6,6 @@
 offset_right = 144.0
 offset_bottom = 36.0
 theme = ExtResource("1_8brgs")
+theme_type_variation = &"FlatButton"
 text = "Generic Button"
+flat = true

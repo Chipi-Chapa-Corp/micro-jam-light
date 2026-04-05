@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://c5wxnnchoumrv"]
 
 [ext_resource type="Script" uid="uid://vq00ot2uic2w" path="res://scenes/levels/tile-control.gd" id="1_5ehse"]
-[ext_resource type="TileSet" uid="uid://dn6urvvwkdcfc" path="res://scenes/levels/assets/tileset.tres" id="2_5jvu3"]
+[ext_resource type="TileSet" uid="uid://dodfa3fcd3xum" path="res://scenes/levels/assets/tileset.tres" id="2_5jvu3"]
 [ext_resource type="PackedScene" uid="uid://cbj4571v1xuf6" path="res://scenes/player/player.tscn" id="2_gyius"]
-[ext_resource type="TileSet" uid="uid://dcgb3olcvd43g" path="res://scenes/levels/assets/shadow.tres" id="3_irrgu"]
+[ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="3_irrgu"]
 [ext_resource type="AudioStream" uid="uid://cf7d5y0pucms6" path="res://Sounds/whoosh.wav" id="5_irrgu"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="6_5jvu3"]
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="7_n0gcm"]

@@ -1,59 +1,40 @@
 [gd_resource type="Theme" format=3 uid="uid://dq5he3f3qilxj"]
 
 [ext_resource type="FontFile" uid="uid://btnvba2nxu2vj" path="res://scenes/main-menu/gui-assets/fonts/Micro5-Regular.ttf" id="1_hdlwd"]
-[ext_resource type="Texture2D" uid="uid://b2bdlq682fk71" path="res://scenes/main-menu/gui-assets/images/buttons/button-hover-primary.png" id="2_jytg8"]
-[ext_resource type="Texture2D" uid="uid://c4lqxyj2ixck7" path="res://scenes/main-menu/gui-assets/images/buttons/button-released-primary.png" id="2_ul21t"]
-[ext_resource type="Texture2D" uid="uid://8lteb58a1ekw" path="res://scenes/main-menu/gui-assets/images/buttons/button-pressed-primary.png" id="4_b3jrt"]
 [ext_resource type="FontFile" uid="uid://f63d185udmxp" path="res://scenes/main-menu/gui-assets/fonts/Geo-Regular.ttf" id="5_2k13m"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_311dl"]
-load_path = "res://.godot/imported/button-disabled-primary.png-79302367619bf8ddb89728052ffb3396.ctex"
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6j7ci"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u0b4a"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-texture = SubResource("CompressedTexture2D_311dl")
-texture_margin_left = 4.0
-texture_margin_top = 2.0
-texture_margin_right = 4.0
-texture_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xjn01"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-texture = ExtResource("2_jytg8")
-texture_margin_left = 4.0
-texture_margin_top = 2.0
-texture_margin_right = 4.0
-texture_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jytg8"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-texture = ExtResource("2_ul21t")
-texture_margin_left = 4.0
-texture_margin_top = 2.0
-texture_margin_right = 4.0
-texture_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_aoiyn"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-texture = ExtResource("4_b3jrt")
-texture_margin_left = 4.0
-texture_margin_top = 4.0
-texture_margin_right = 4.0
-texture_margin_bottom = 5.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbad3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.51000005)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [resource]
 default_font = ExtResource("5_2k13m")
 default_font_size = 32
-Button/font_sizes/font_size = 32
-Button/fonts/font = ExtResource("1_hdlwd")
-Button/styles/disabled = SubResource("StyleBoxTexture_u0b4a")
-Button/styles/hover = SubResource("StyleBoxTexture_xjn01")
-Button/styles/normal = SubResource("StyleBoxTexture_jytg8")
-Button/styles/pressed = SubResource("StyleBoxTexture_aoiyn")
+FlatButton/colors/font_color = Color(1, 1, 1, 1)
+FlatButton/colors/font_disabled_color = Color(0.2999676, 0.3554047, 0.7157464, 1)
+FlatButton/colors/font_hover_color = Color(0.8394798, 0.8929908, 0.9991606, 1)
+FlatButton/colors/font_outline_color = Color(0, 0.10980392, 0.78039217, 1)
+FlatButton/constants/outline_size = 20
+FlatButton/font_sizes/font_size = 64
+FlatButton/fonts/font = ExtResource("1_hdlwd")
+FlatButton/styles/disabled = SubResource("StyleBoxEmpty_6j7ci")
+FlatButton/styles/hover = SubResource("StyleBoxEmpty_6j7ci")
+FlatButton/styles/normal = SubResource("StyleBoxEmpty_6j7ci")
+FlatButton/styles/pressed = SubResource("StyleBoxFlat_pbad3")
 HeaderLarge/font_sizes/font_size = 96
 HeaderLarge/fonts/font = ExtResource("1_hdlwd")
 HeaderSmall/font_sizes/font_size = 35

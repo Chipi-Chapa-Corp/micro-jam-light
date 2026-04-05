@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://biu5eykdnhd6j" path="res://scenes/main-menu/gui-assets/images/backgrounds/1-red.png" id="4_u6xtm"]
 [ext_resource type="Texture2D" uid="uid://byc87vq04od6r" path="res://scenes/main-menu/gui-assets/images/backgrounds/2-red.png" id="5_uf6ia"]
 [ext_resource type="Texture2D" uid="uid://cupw8bspvwe3n" path="res://scenes/main-menu/gui-assets/images/backgrounds/3-red.png" id="6_brcow"]
+[ext_resource type="PackedScene" uid="uid://3wpy4xwwypa" path="res://scenes/main-menu/gui-elements/button.tscn" id="7_u6xtm"]
 
 [node name="Game Over" type="Control" unique_id=472900240]
 layout_mode = 3
@@ -120,3 +121,23 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_constants/separation = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1179034346]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 64
+
+[node name="Button" parent="MarginContainer/HBoxContainer" unique_id=1899383793 instance=ExtResource("7_u6xtm")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9878276, 0.8921059, 0.9279237, 1)
+theme_override_colors/font_disabled_color = Color(0.36862746, 0.17254902, 0.2627451, 1)
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+text = "To Main Menu"
+
+[node name="Button2" parent="MarginContainer/HBoxContainer" unique_id=844761379 instance=ExtResource("7_u6xtm")]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.9882353, 0.8901961, 0.92941177, 1)
+theme_override_colors/font_disabled_color = Color(0.37027282, 0.17416154, 0.26336637, 1)
+theme_override_colors/font_outline_color = Color(0.5137255, 0.10980392, 0.3254902, 1)
+text = "Quit"

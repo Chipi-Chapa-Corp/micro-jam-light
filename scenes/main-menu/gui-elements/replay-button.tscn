@@ -15,5 +15,6 @@ offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "Replay Level"
+theme_override_colors/icon_hover_color = Color(0.9882353, 0.8901961, 0.92941177, 1)
 icon = ExtResource("1_1nqt5")
 flat = true
