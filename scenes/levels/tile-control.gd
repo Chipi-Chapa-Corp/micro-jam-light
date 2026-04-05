@@ -15,7 +15,7 @@ const DEFAULT_PLATFORM_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/pla
 const DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH := "res://scenes/levels/materials/viewport_edge_glow.tres"
 const HOLD_DURATION_SECONDS := 3.0
 const GAME_OVER_SCENE_PATH := "res://ui/screens/game-over/scene.tscn"
-const FIRST_DEATH_HINT_TEXT := "Hold R to restart current level or Backspace to skip level (3s)"
+const FIRST_DEATH_HINT_TEXT := "You can hold Backspace for 3 seconds to skip the level or R to restart it"
 const HINT_SCENE := preload("res://ui/gui-elements/hint.tscn")
 
 var _side_layers: Array[TileMapLayer] = []
@@ -132,6 +132,7 @@ func _spawn_first_death_hint() -> void:
 	var hint = HINT_SCENE.instantiate()
 	hint.hint_text = FIRST_DEATH_HINT_TEXT
 	hint.auto_show_static_hint = true
+	hint.show_as_modal = true
 	hint.show_only_once_per_level = false
 
 	var level_root := get_parent()
