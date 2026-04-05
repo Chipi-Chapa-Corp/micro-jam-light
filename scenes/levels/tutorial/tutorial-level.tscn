@@ -8,11 +8,23 @@
 [ext_resource type="AudioStream" uid="uid://d20b0bt80f22g" path="res://sounds/whoosh.wav" id="5_irrgu"]
 [ext_resource type="PackedScene" uid="uid://l3e0jtejrmrc" path="res://scenes/portal/portal.tscn" id="6_5jvu3"]
 [ext_resource type="PackedScene" uid="uid://djehnm4lcs0oa" path="res://scenes/star/star.tscn" id="7_n0gcm"]
+[ext_resource type="PackedScene" uid="uid://c5ltu4ui81awc" path="res://ui/gui-elements/hint.tscn" id="9_fl0jr"]
 
 [node name="Tutorial Level" type="Node2D" unique_id=1604683869]
 
 [node name="Parallax" parent="." unique_id=1221868175 node_paths=PackedStringArray("player") instance=ExtResource("1_me5g0")]
 player = NodePath("../Player")
+
+[node name="Hint" parent="." unique_id=503024260 instance=ExtResource("9_fl0jr")]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 2.0
+offset_bottom = 2.0
+hint_text = "Control robot with WASD and light with arrows. Shadows are solid, use them for your advandage.
+
+Shadow can crash you, so be careful.
+
+Collect all stars to perfect level."
 
 [node name="TileMap" type="Node2D" parent="." unique_id=1116531227 node_paths=PackedStringArray("base_layer", "top_layer", "left_layer", "bottom_layer", "right_layer", "sfx_switch")]
 script = ExtResource("1_5ehse")
@@ -48,13 +60,16 @@ stream = ExtResource("5_irrgu")
 volume_db = -10.0
 
 [node name="Player" parent="." unique_id=217580263 instance=ExtResource("2_gyius")]
-position = Vector2(271, 522)
+position = Vector2(480, 578)
 
 [node name="Star" parent="." unique_id=1733251554 instance=ExtResource("7_n0gcm")]
 position = Vector2(752, 436)
 
 [node name="Star2" parent="." unique_id=1704410359 instance=ExtResource("7_n0gcm")]
 position = Vector2(368, 385)
+
+[node name="Star3" parent="." unique_id=1862320736 instance=ExtResource("7_n0gcm")]
+position = Vector2(576, 595)
 
 [node name="Portal" parent="." unique_id=1866772128 instance=ExtResource("6_5jvu3")]
 position = Vector2(879, 263)
