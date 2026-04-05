@@ -21,13 +21,16 @@ const MAX_Y = 640.0
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 var spawn_effect := preload("res://scenes/player/spawnEffect/spawnEffect.tscn")
+const DEFAULT_CHARACTER_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/character_edge_light.tres"
 
 var is_exiting = false
 var was_on_floor = false
 var step_timer = 0.0
 var step_delay_timer = 0.0
+var _character_light_shader_material: ShaderMaterial
 
 func _ready() -> void:
+	_setup_character_light_material()
 	set_physics_process(false)
 	await spawn_appear_effect()
 	set_physics_process(true)
@@ -85,6 +88,7 @@ func _physics_process(delta: float) -> void:
 		step_timer = 0.0
 	
 	was_on_floor = is_on_floor()
+	_update_character_light_direction()
 
 func _check_out_of_bounds() -> void:
 	if is_exiting:
@@ -137,6 +141,56 @@ func update_animation(direction: float) -> void:
 func play_anim(animation_name: String) -> void:
 	if anim.animation != animation_name:
 		anim.play(animation_name)
+
+
+func _setup_character_light_material() -> void:
+	var shader_material := anim.material as ShaderMaterial
+
+	if shader_material == null or not _shader_has_uniform(shader_material.shader, "light_position"):
+		var material_to_use := load(DEFAULT_CHARACTER_LIGHT_MATERIAL_PATH) as Material
+		var light_material := material_to_use as ShaderMaterial
+		if light_material == null:
+			push_warning("player.gd: Could not load character edge-light material.")
+			return
+
+		shader_material = light_material.duplicate() as ShaderMaterial
+		anim.material = shader_material
+
+	_character_light_shader_material = shader_material
+	_update_character_light_direction()
+
+
+func _update_character_light_direction() -> void:
+	if _character_light_shader_material == null:
+		return
+	if tile_map == null:
+		return
+
+	var active_side = int(tile_map.get("active_side_index"))
+	_character_light_shader_material.set_shader_parameter("light_position", _light_position_from_active_side(active_side))
+	_character_light_shader_material.set_shader_parameter("sprite_flip_h", 1.0 if anim.flip_h else 0.0)
+
+
+func _light_position_from_active_side(active_side: int) -> int:
+	# active_side_index order is [top, left, bottom, right].
+	# shader light_position order is [top=0, bottom=1, left=2, right=3].
+	match active_side:
+		0: return 0
+		1: return 2
+		2: return 1
+		3: return 3
+		_: return 0
+
+
+func _shader_has_uniform(shader: Shader, uniform_name: StringName) -> bool:
+	if shader == null:
+		return false
+
+	for uniform_data in shader.get_shader_uniform_list():
+		if StringName(uniform_data.get("name", "")) == uniform_name:
+			return true
+
+	return false
 
 func _resolve_stuck() -> void:
 	if tile_map == null:

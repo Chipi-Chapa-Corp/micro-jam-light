@@ -10,10 +10,13 @@ shader_parameter/direction = 0
 shader_parameter/step_index = 0
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13lov"]
 shader = ExtResource("1_p2c62")
@@ -22,10 +25,13 @@ shader_parameter/direction = 0
 shader_parameter/step_index = 1
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nyot1"]
 shader = ExtResource("1_p2c62")
@@ -34,10 +40,13 @@ shader_parameter/direction = 0
 shader_parameter/step_index = 2
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66nrt"]
 texture = ExtResource("2_t8ckb")
@@ -70,10 +79,13 @@ shader_parameter/direction = 1
 shader_parameter/step_index = 0
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t8ckb"]
 shader = ExtResource("1_p2c62")
@@ -82,10 +94,13 @@ shader_parameter/direction = 1
 shader_parameter/step_index = 1
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_66nrt"]
 shader = ExtResource("1_p2c62")
@@ -94,10 +109,13 @@ shader_parameter/direction = 1
 shader_parameter/step_index = 2
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcm1e"]
 texture = ExtResource("2_t8ckb")
@@ -130,10 +148,13 @@ shader_parameter/direction = 2
 shader_parameter/step_index = 0
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uiiec"]
 shader = ExtResource("1_p2c62")
@@ -142,10 +163,13 @@ shader_parameter/direction = 2
 shader_parameter/step_index = 1
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bjbmr"]
 shader = ExtResource("1_p2c62")
@@ -154,10 +178,13 @@ shader_parameter/direction = 2
 shader_parameter/step_index = 2
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uiiec"]
 texture = ExtResource("2_t8ckb")
@@ -190,10 +217,13 @@ shader_parameter/direction = 3
 shader_parameter/step_index = 0
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdyvo"]
 shader = ExtResource("1_p2c62")
@@ -202,10 +232,13 @@ shader_parameter/direction = 3
 shader_parameter/step_index = 1
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f7ysa"]
 shader = ExtResource("1_p2c62")
@@ -214,10 +247,13 @@ shader_parameter/direction = 3
 shader_parameter/step_index = 2
 shader_parameter/tile_size = 32.0
 shader_parameter/max_tiles = 3.0
+shader_parameter/cast_progress = 1.0
+shader_parameter/reveal_softness_px = 2.0
 shader_parameter/pixel_block_px = 6.0
 shader_parameter/alpha_steps = 0.2
 shader_parameter/distortion_px = 2.5
 shader_parameter/distortion_block_px = 4.0
+shader_parameter/tail_opacity = 0.25
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjbmr"]
 texture = ExtResource("2_t8ckb")

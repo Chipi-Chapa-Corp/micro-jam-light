@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d3vp3iknk3fpf"]
 
-[ext_resource type="Shader" path="res://scenes/levels/materials/shaders/platform_top_light.gdshader" id="1_6pr1b"]
+[ext_resource type="Shader" uid="uid://tkubx6pfyu6e" path="res://scenes/levels/materials/shaders/platform_top_light.gdshader" id="1_6pr1b"]
 
 [resource]
 shader = ExtResource("1_6pr1b")
@@ -11,3 +11,8 @@ shader_parameter/tile_size = 32.0
 shader_parameter/grid_origin_y = 0.0
 shader_parameter/grid_origin_x = 0.0
 shader_parameter/light_position = 1
+shader_parameter/edge_mask_enabled = 0.0
+shader_parameter/edge_mask_origin_x = 0.0
+shader_parameter/edge_mask_origin_y = 0.0
+shader_parameter/edge_mask_columns = 1.0
+shader_parameter/edge_mask_rows = 1.0
