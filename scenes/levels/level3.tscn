@@ -74,7 +74,7 @@ position = Vector2(1041, 624)
 
 [node name="BlindEnemy" parent="Enemies" unique_id=1773173021 instance=ExtResource("9_hadiw")]
 position = Vector2(176, 616)
-waypoint_block_count_left = 5.5
+waypoint_block_count_left = 4.0
 
 [node name="BlindEnemy2" parent="Enemies" unique_id=1457273228 instance=ExtResource("9_hadiw")]
 position = Vector2(336, 617)

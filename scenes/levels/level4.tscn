@@ -17,7 +17,6 @@
 player = NodePath("../Player")
 
 [node name="Hint" parent="." unique_id=1552697903 instance=ExtResource("10_h4n7t")]
-visible = false
 hint_text = "Beware of Red Slimes as they can sense you"
 auto_show_static_hint = true
 place_bottom_right = true
