@@ -13,7 +13,7 @@ extends Node2D
 
 const DEFAULT_PLATFORM_LIGHT_MATERIAL_PATH := "res://scenes/levels/materials/platform_top_light.tres"
 const DEFAULT_VIEWPORT_GLOW_MATERIAL_PATH := "res://scenes/levels/materials/viewport_edge_glow.tres"
-const HOLD_DURATION_SECONDS := 3.0
+const HOLD_DURATION_SECONDS := 1.0
 const GAME_OVER_SCENE_PATH := "res://ui/screens/game-over/scene.tscn"
 const BONUS_FINISH_SCENE_PATH := "res://scenes/bonus-finish/scene.tscn"
 const MAIN_CAMPAIGN_END_LEVEL := 5
@@ -29,6 +29,8 @@ var _layer_shadow_materials: Array = []
 var _viewport_glow_shader_material: ShaderMaterial
 var _restart_hold_seconds := 0.0
 var _skip_hold_seconds := 0.0
+var _restart_hold_started_at_usec := -1
+var _skip_hold_started_at_usec := -1
 var _is_level_transitioning := false
 
 func _ready() -> void:
@@ -71,23 +73,34 @@ func _unhandled_input(event: InputEvent) -> void:
 		_set_active_side(3)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _is_level_transitioning:
 		return
 
-	_restart_hold_seconds = _update_hold_timer(_is_restart_pressed(), _restart_hold_seconds, delta)
-	_skip_hold_seconds = _update_hold_timer(_is_skip_pressed(), _skip_hold_seconds, delta)
+	var now_usec := Time.get_ticks_usec()
+	var restart_pressed := _is_restart_pressed()
+	var skip_pressed := _is_skip_pressed()
+
+	if restart_pressed:
+		if _restart_hold_started_at_usec < 0:
+			_restart_hold_started_at_usec = now_usec
+		_restart_hold_seconds = min(float(now_usec - _restart_hold_started_at_usec) / 1000000.0, HOLD_DURATION_SECONDS)
+	else:
+		_restart_hold_started_at_usec = -1
+		_restart_hold_seconds = 0.0
+
+	if skip_pressed:
+		if _skip_hold_started_at_usec < 0:
+			_skip_hold_started_at_usec = now_usec
+		_skip_hold_seconds = min(float(now_usec - _skip_hold_started_at_usec) / 1000000.0, HOLD_DURATION_SECONDS)
+	else:
+		_skip_hold_started_at_usec = -1
+		_skip_hold_seconds = 0.0
 
 	if _restart_hold_seconds >= HOLD_DURATION_SECONDS:
 		_trigger_level_restart()
 	elif _skip_hold_seconds >= HOLD_DURATION_SECONDS:
 		_trigger_level_skip()
-
-
-func _update_hold_timer(is_pressed: bool, hold_seconds: float, delta: float) -> float:
-	if is_pressed:
-		return min(hold_seconds + delta, HOLD_DURATION_SECONDS)
-	return 0.0
 
 
 func _is_restart_pressed() -> bool:
@@ -102,6 +115,8 @@ func _trigger_level_restart() -> void:
 	_is_level_transitioning = true
 	_restart_hold_seconds = 0.0
 	_skip_hold_seconds = 0.0
+	_restart_hold_started_at_usec = -1
+	_skip_hold_started_at_usec = -1
 	GlobalState.reset_current_level()
 	get_tree().reload_current_scene()
 
@@ -110,6 +125,8 @@ func _trigger_level_skip() -> void:
 	_is_level_transitioning = true
 	_restart_hold_seconds = 0.0
 	_skip_hold_seconds = 0.0
+	_restart_hold_started_at_usec = -1
+	_skip_hold_started_at_usec = -1
 	var completed_level: int = GlobalState.current_level
 	GlobalState.end_level(true)
 	if completed_level == BONUS_LEVEL_NUMBER:

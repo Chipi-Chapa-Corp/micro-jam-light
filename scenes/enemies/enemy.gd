@@ -9,7 +9,7 @@ class_name Enemy
 @export var default_face_right: bool = true
 
 @export_group("Gameplay")
-@export var player: Node2D  # Reference to the player
+@export var player: Node2D # Reference to the player
 @export var collide_with_walls: bool = false
 @export_range(1, 32, 1) var wall_collision_layer: int = 1
 
@@ -20,7 +20,7 @@ class_name Enemy
 @export var overhead_vision_vertical_tolerance: float = 120.0
 @export var face_player_turn_threshold: float = 6.0
 
-@onready var ray_cast: RayCast2D = $RayCast2D  # For vision
+@onready var ray_cast: RayCast2D = $RayCast2D # For vision
 @onready var anim: AnimatedSprite2D = get_node_or_null("AnimatedSprite2D")
 
 var stationary_can_turn_around: bool = false
@@ -28,7 +28,7 @@ var current_waypoint_index: int = 0
 var is_patrolling: bool = true
 var sees_player_now: bool = false
 var facing_direction_x: int = 1
-var waypoints: Array[Vector2] = [] 
+var waypoints: Array[Vector2] = []
 var is_stationary: bool = true
 var turn_timer: float = 0.0
 
@@ -73,7 +73,7 @@ func _handle_stationary_behavior(delta: float) -> void:
 		return
 	turn_timer += delta
 	if turn_timer >= 3.0:
-		facing_direction_x = -facing_direction_x
+		facing_direction_x = - facing_direction_x
 		_apply_facing_visual()
 		turn_timer = 0.0
 
@@ -88,7 +88,7 @@ func _physics_process(_delta: float) -> void:
 	if is_patrolling:
 		patrol()
 	else:
-		attack()  # Override in subclasses
+		attack() # Override in subclasses
 
 	update_facing_direction()
 	move_and_slide()
@@ -105,7 +105,7 @@ func _check_player_collision() -> void:
 func _process(_delta: float) -> void:
 	queue_redraw()
 
-func patrol() -> void:	
+func patrol() -> void:
 	if is_stationary or waypoints.is_empty():
 		velocity = Vector2.ZERO
 		if anim:
@@ -119,7 +119,7 @@ func patrol() -> void:
 	if anim:
 		anim.play("walk")
 	
-	if global_position.distance_to(target) < 10:  
+	if global_position.distance_to(target) < 10:
 		current_waypoint_index = (current_waypoint_index + 1) % waypoints.size()
 
 func can_see_player() -> bool:
@@ -193,7 +193,7 @@ func update_facing_direction() -> void:
 	_apply_facing_visual()
 
 func attack() -> void:
-	pass  
+	pass
 
 func _apply_facing_visual() -> void:
 	if anim:
