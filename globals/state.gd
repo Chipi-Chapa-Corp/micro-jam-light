@@ -148,10 +148,6 @@ func mark_hint_seen(level: int = -1) -> void:
 	_seen_hints_by_level[level] = true
 
 
-func _clear_hint_seen(level: int) -> void:
-	_seen_hints_by_level.erase(level)
-
-
 func request_first_death_hint() -> void:
 	if _has_shown_first_death_hint:
 		return
@@ -177,7 +173,6 @@ func reset_progress() -> void:
 	_time_by_level_seconds = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	_skipped_by_level = [false, false, false, false, false, false]
 	_start_tick_by_level = [_NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK, _NOT_STARTED_TICK]
-	_seen_hints_by_level.clear()
 	_pending_first_death_hint = false
 	_has_shown_first_death_hint = false
 
@@ -197,7 +192,6 @@ func restart_run_from_level(level: int) -> void:
 		_time_by_level_seconds[i] = 0.0
 		_skipped_by_level[i] = false
 		_start_tick_by_level[i] = _NOT_STARTED_TICK
-		_clear_hint_seen(i + 1)
 
 	start_level(level)
 
@@ -206,5 +200,4 @@ func reset_current_level() -> void:
 	_stars_by_level[_to_index(current_level)] = 0
 	_time_by_level_seconds[_to_index(current_level)] = 0.0
 	_skipped_by_level[_to_index(current_level)] = false
-	_clear_hint_seen(current_level)
 	start_level(current_level)

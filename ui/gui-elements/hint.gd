@@ -49,10 +49,11 @@ func _ready() -> void:
 		return
 
 	if auto_show_static_hint:
+		set_process(false)
 		if _should_skip_auto_hint():
+			_show_hover_idle()
 			return
 		_mark_auto_hint_seen()
-		set_process(false)
 		if show_as_modal:
 			_show_static_modal_hint()
 		else:
