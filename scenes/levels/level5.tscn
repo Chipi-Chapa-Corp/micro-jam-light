@@ -123,7 +123,7 @@ waypoint_block_count_right = 7.0
 [node name="Shooter" type="Node" parent="Enemies" unique_id=1483815282]
 
 [node name="ShooterEnemy" parent="Enemies/Shooter" unique_id=678297121 instance=ExtResource("9_v0vb7")]
-position = Vector2(976, 392)
+position = Vector2(976, 391)
 is_stationary_mode = true
 
 [node name="ShooterEnemy2" parent="Enemies/Shooter" unique_id=1816874153 instance=ExtResource("9_v0vb7")]

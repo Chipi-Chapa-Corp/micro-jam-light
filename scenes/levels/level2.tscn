@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://er03wh1b4pa7"]
 
-[ext_resource type="PackedScene" path="res://ui/gui-elements/parallax.tscn" id="1_k0mew"]
+[ext_resource type="PackedScene" uid="uid://cohm4wa3aq7xm" path="res://ui/gui-elements/parallax.tscn" id="1_k0mew"]
 [ext_resource type="Script" uid="uid://vq00ot2uic2w" path="res://scenes/levels/tile-control.gd" id="2_b0vvs"]
 [ext_resource type="TileSet" uid="uid://dodfa3fcd3xum" path="res://scenes/levels/assets/tileset.tres" id="3_oyk6k"]
 [ext_resource type="TileSet" uid="uid://b4rgxhn8gxr6n" path="res://scenes/levels/assets/shadow.tres" id="5_8i1lk"]
@@ -73,13 +73,13 @@ position = Vector2(1105, 400)
 [node name="Enemies" type="Node" parent="." unique_id=663848092]
 
 [node name="ShooterEnemy" parent="Enemies" unique_id=678297121 instance=ExtResource("9_oyk6k")]
-position = Vector2(49, 137)
+position = Vector2(49, 136)
 is_stationary_mode = true
 can_turn_around_in_stationary = false
 facing_right_no_turn = true
 
 [node name="ShooterEnemy2" parent="Enemies" unique_id=1881862282 instance=ExtResource("9_oyk6k")]
-position = Vector2(50, 328)
+position = Vector2(48, 328)
 is_stationary_mode = true
 can_turn_around_in_stationary = false
 facing_right_no_turn = true
